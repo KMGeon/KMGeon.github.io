@@ -1,8 +1,8 @@
 ---
 title: JUnit5, AssertJ 활용방법 및 Spring boot 테스트 코드 작성법
 date: 2024-03-23 10:00:00 +0900
-categories: [테스트]
-tags: [첫글, 시작]
+categories: [테스트 코드]
+tags: [JUnit]
 author: mugeon
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: "Jenkins + SVN + CodeDeploy를 이용한 Pipeline Blue-Green 무중단 배포"
 date: 2024-02-24 10:00:00 +0900
-categories: [DevOps, CI/CD]
-tags: [Jenkins, CI/CD, CodeDeploy, Blue-Green, 무중단배포, SVN, Pipeline]
+categories: [Infra]
 author: mugeon
 ---
 
