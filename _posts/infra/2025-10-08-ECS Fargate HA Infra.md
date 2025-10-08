@@ -3,6 +3,7 @@ title: ECS Fargate HA Infra
 date: 2025-10-08 10:00:00 +0900
 categories: [Infra]
 author: mugeon
+mermaid: true
 ---
 
 # ECS Fargate HA Infra
