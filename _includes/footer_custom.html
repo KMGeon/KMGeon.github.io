@@ -1,0 +1,47 @@
+<script>
+// Post dates mapping by title
+const postDatesByTitle = {
+  {% for page in site.pages %}
+  {% if page.date %}
+  "{{ page.title | strip | escape }}": {
+    sort: "{{ page.date | date: '%Y%m%d' }}",
+    display: "{{ page.date | date: '%Y.%m.%d' }}"
+  },
+  {% endif %}
+  {% endfor %}
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Add dates and sort navigation items
+  const navLists = document.querySelectorAll('.nav-list .nav-list');
+
+  navLists.forEach(navList => {
+    const items = Array.from(navList.querySelectorAll(':scope > .nav-list-item'));
+
+    // First, add dates to all items and store date info
+    items.forEach(item => {
+      const link = item.querySelector('.nav-list-link');
+      if (link) {
+        const titleText = link.textContent.trim();
+        const dateInfo = postDatesByTitle[titleText];
+        if (dateInfo) {
+          item.dataset.sortDate = dateInfo.sort;
+          link.innerHTML = `<span class="post-date">${dateInfo.display}</span><span class="post-title-text">${titleText}</span>`;
+        } else {
+          item.dataset.sortDate = '0';
+        }
+      }
+    });
+
+    // Sort by date descending
+    items.sort((a, b) => {
+      const dateA = a.dataset.sortDate || '0';
+      const dateB = b.dataset.sortDate || '0';
+      return dateB.localeCompare(dateA);
+    });
+
+    // Re-append in sorted order
+    items.forEach(item => navList.appendChild(item));
+  });
+});
+</script>

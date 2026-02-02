@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 배경 원 -->
+  <circle cx="256" cy="256" r="240" fill="#6C5CE7"/>
+
+  <!-- 고양이 얼굴 -->
+  <ellipse cx="256" cy="280" rx="140" ry="120" fill="#FFEAA7"/>
+
+  <!-- 왼쪽 귀 -->
+  <polygon points="130,180 170,100 210,180" fill="#FFEAA7"/>
+  <polygon points="145,175 170,120 195,175" fill="#FFB6C1"/>
+
+  <!-- 오른쪽 귀 -->
+  <polygon points="302,180 342,100 382,180" fill="#FFEAA7"/>
+  <polygon points="317,175 342,120 367,175" fill="#FFB6C1"/>
+
+  <!-- 왼쪽 눈 -->
+  <ellipse cx="200" cy="260" rx="28" ry="32" fill="#2D3436"/>
+  <ellipse cx="208" cy="252" rx="10" ry="12" fill="white"/>
+
+  <!-- 오른쪽 눈 -->
+  <ellipse cx="312" cy="260" rx="28" ry="32" fill="#2D3436"/>
+  <ellipse cx="320" cy="252" rx="10" ry="12" fill="white"/>
+
+  <!-- 코 -->
+  <ellipse cx="256" cy="310" rx="18" ry="14" fill="#FFB6C1"/>
+
+  <!-- 입 -->
+  <path d="M 256 324 Q 230 350 220 340" stroke="#2D3436" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 256 324 Q 282 350 292 340" stroke="#2D3436" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- 수염 -->
+  <line x1="130" y1="290" x2="180" y2="300" stroke="#2D3436" stroke-width="3" stroke-linecap="round"/>
+  <line x1="125" y1="310" x2="178" y2="315" stroke="#2D3436" stroke-width="3" stroke-linecap="round"/>
+  <line x1="130" y1="330" x2="180" y2="325" stroke="#2D3436" stroke-width="3" stroke-linecap="round"/>
+
+  <line x1="382" y1="290" x2="332" y2="300" stroke="#2D3436" stroke-width="3" stroke-linecap="round"/>
+  <line x1="387" y1="310" x2="334" y2="315" stroke="#2D3436" stroke-width="3" stroke-linecap="round"/>
+  <line x1="382" y1="330" x2="332" y2="325" stroke="#2D3436" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- 볼 터치 -->
+  <ellipse cx="160" cy="300" rx="20" ry="15" fill="#FF7675" opacity="0.5"/>
+  <ellipse cx="352" cy="300" rx="20" ry="15" fill="#FF7675" opacity="0.5"/>
+</svg>

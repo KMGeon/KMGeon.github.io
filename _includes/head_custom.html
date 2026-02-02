@@ -1,0 +1,80 @@
+<!-- Busuanzi Visitor Counter -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true }
+    });
+
+    // Convert mermaid code blocks
+    document.querySelectorAll('pre code.language-mermaid, pre > code').forEach(function(el) {
+      if (el.textContent.trim().startsWith('sequenceDiagram') ||
+          el.textContent.trim().startsWith('flowchart') ||
+          el.textContent.trim().startsWith('graph') ||
+          el.textContent.trim().startsWith('classDiagram') ||
+          el.textContent.trim().startsWith('stateDiagram') ||
+          el.textContent.trim().startsWith('erDiagram') ||
+          el.textContent.trim().startsWith('gantt') ||
+          el.textContent.trim().startsWith('pie')) {
+        var pre = el.closest('pre');
+        var wrapper = pre.closest('.highlighter-rouge') || pre;
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = el.textContent;
+        wrapper.replaceWith(div);
+      }
+    });
+
+    mermaid.init(undefined, '.mermaid');
+  });
+</script>
+
+<style>
+/* Mermaid diagram styling */
+.mermaid {
+  background: #ffffff !important;
+  padding: 1.5rem !important;
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  margin: 1.5rem 0 !important;
+  text-align: center !important;
+}
+
+/* Post dates in navigation */
+.nav-list .nav-list .nav-list-link {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 2px !important;
+  padding: 0.6rem 1rem 0.6rem 1.5rem !important;
+}
+
+.nav-list-link .post-date {
+  font-size: 0.7rem !important;
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+}
+
+.nav-list-link .post-title-text {
+  font-weight: 400 !important;
+  color: #6b7280 !important;
+  font-size: 0.75rem !important;
+  line-height: 1.4 !important;
+}
+
+.nav-list-link:hover .post-title-text {
+  color: #2563eb !important;
+}
+
+.nav-list-link.active .post-title-text {
+  color: #2563eb !important;
+  font-weight: 500 !important;
+}
+</style>
