@@ -201,15 +201,15 @@ body {
   font-weight: 500 !important;
 }
 
-// Code block wrapper - Clean style
+// Code block wrapper - Clean style (light theme)
 .main-content div.highlighter-rouge:has(pre),
 .main-content figure.highlight:has(pre) {
   position: relative !important;
-  background: #1f2937 !important;
+  background: #f8f9fa !important;
   border-radius: 12px !important;
   margin: 1.5rem 0 !important;
-  border: 1px solid #374151 !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
   padding: 0 !important;
   overflow: hidden !important;
 
@@ -221,7 +221,7 @@ body {
 
 // Code blocks
 .main-content pre {
-  background-color: #1f2937 !important;
+  background-color: #f8f9fa !important;
   border-radius: 12px !important;
   padding: 1.25rem 1.5rem !important;
   overflow-x: auto !important;
@@ -232,7 +232,7 @@ body {
   code {
     font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Fira Code', monospace !important;
     background-color: transparent !important;
-    color: #e5e7eb !important;
+    color: #1f2937 !important;
     padding: 0 !important;
     font-size: 0.875rem !important;
     line-height: 1.7 !important;
@@ -311,7 +311,7 @@ div.highlighter-rouge .table-wrapper {
   }
 }
 
-// Clean syntax highlighting colors
+// Clean syntax highlighting colors (light theme)
 .highlight {
   // Comments - gray
   .c, .c1, .cm, .cp, .cs {
@@ -319,66 +319,66 @@ div.highlighter-rouge .table-wrapper {
     font-style: italic !important;
   }
 
-  // Keywords - cyan/blue
+  // Keywords - purple
   .k, .kd, .kn, .kp, .kr, .kt, .kc {
-    color: #67e8f9 !important;
+    color: #7c3aed !important;
   }
 
-  // Strings - lime green
+  // Strings - green
   .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr {
-    color: #a3e635 !important;
+    color: #059669 !important;
   }
 
   // Attribute names
-  .na { color: #93c5fd !important; }
+  .na { color: #0891b2 !important; }
 
   // Built-in names
-  .nb { color: #fbbf24 !important; }
+  .nb { color: #b45309 !important; }
 
   // Class names
-  .nc, .nn { color: #a78bfa !important; }
+  .nc, .nn { color: #7c3aed !important; }
 
   // Function names
-  .nf, .fm { color: #60a5fa !important; }
+  .nf, .fm { color: #2563eb !important; }
 
   // Constants
-  .no { color: #f472b6 !important; }
+  .no { color: #be185d !important; }
 
   // Variables
-  .nv, .vi, .vg, .vc { color: #e4e4e7 !important; }
+  .nv, .vi, .vg, .vc { color: #1f2937 !important; }
 
   // Operators
-  .o, .ow { color: #e4e4e7 !important; }
+  .o, .ow { color: #374151 !important; }
 
   // Punctuation
-  .p { color: #e4e4e7 !important; }
+  .p { color: #374151 !important; }
 
   // Numbers
-  .m, .mi, .mf, .mh, .mo { color: #fb923c !important; }
+  .m, .mi, .mf, .mh, .mo { color: #c2410c !important; }
 
   // Errors
   .err {
-    color: #f87171 !important;
+    color: #dc2626 !important;
     background-color: transparent !important;
   }
 
   // Names
-  .n { color: #e4e4e7 !important; }
+  .n { color: #1f2937 !important; }
 
   // Labels
-  .nl { color: #93c5fd !important; }
+  .nl { color: #0891b2 !important; }
 
   // Tags
-  .nt { color: #f472b6 !important; }
+  .nt { color: #be185d !important; }
 
   // Decorators
-  .nd { color: #fbbf24 !important; }
+  .nd { color: #b45309 !important; }
 
   // Types
-  .nx { color: #e4e4e7 !important; }
+  .nx { color: #1f2937 !important; }
 
   // Annotations
-  .at { color: #a78bfa !important; }
+  .at { color: #7c3aed !important; }
 }
 
 // ===== Blockquotes =====
@@ -732,24 +732,25 @@ mark {
   display: none !important;
 }
 
-// Scrollbar styling for code blocks
+// Scrollbar styling for code blocks (light theme)
 .highlight pre::-webkit-scrollbar {
   height: 8px;
 }
 
 .highlight pre::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
   border-radius: 4px;
 }
 
 .highlight pre::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.25);
   }
 }
+
 
 // ===== Post list styling (like reference) =====
 .post-item {

@@ -4,46 +4,250 @@
 <!-- Mermaid -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'default',
-      securityLevel: 'loose',
-      flowchart: { useMaxWidth: true, htmlLabels: true }
-    });
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    securityLevel: 'loose',
+    themeVariables: {
+      primaryColor: '#e0f2fe',
+      primaryTextColor: '#1f2937',
+      primaryBorderColor: '#0891b2',
+      lineColor: '#6b7280',
+      secondaryColor: '#fef3c7',
+      tertiaryColor: '#f3f4f6',
+      background: '#ffffff',
+      mainBkg: '#ffffff',
+      nodeBorder: '#d1d5db',
+      clusterBkg: '#f9fafb',
+      clusterBorder: '#e5e7eb',
+      titleColor: '#1f2937',
+      edgeLabelBackground: '#ffffff',
+      actorBkg: '#e0f2fe',
+      actorBorder: '#0891b2',
+      actorTextColor: '#1f2937',
+      actorLineColor: '#6b7280',
+      signalColor: '#1f2937',
+      signalTextColor: '#1f2937',
+      noteBkgColor: '#fef3c7',
+      noteTextColor: '#1f2937',
+      noteBorderColor: '#fbbf24',
+      activationBkgColor: '#e0f2fe',
+      activationBorderColor: '#0891b2'
+    },
+    flowchart: { useMaxWidth: true, htmlLabels: true },
+    sequence: { useMaxWidth: true }
+  });
 
+  window.addEventListener('load', function() {
     // Convert mermaid code blocks
-    document.querySelectorAll('pre code.language-mermaid, pre > code').forEach(function(el) {
-      if (el.textContent.trim().startsWith('sequenceDiagram') ||
-          el.textContent.trim().startsWith('flowchart') ||
-          el.textContent.trim().startsWith('graph') ||
-          el.textContent.trim().startsWith('classDiagram') ||
-          el.textContent.trim().startsWith('stateDiagram') ||
-          el.textContent.trim().startsWith('erDiagram') ||
-          el.textContent.trim().startsWith('gantt') ||
-          el.textContent.trim().startsWith('pie')) {
+    var codeBlocks = document.querySelectorAll('pre code.language-mermaid, pre > code');
+    var converted = [];
+
+    codeBlocks.forEach(function(el) {
+      var text = el.textContent.trim();
+      var keywords = ['sequenceDiagram', 'flowchart', 'graph', 'classDiagram', 'stateDiagram', 'erDiagram', 'gantt', 'pie'];
+      var isMermaid = keywords.some(function(kw) { return text.startsWith(kw); });
+
+      if (isMermaid) {
         var pre = el.closest('pre');
         var wrapper = pre.closest('.highlighter-rouge') || pre;
         var div = document.createElement('div');
         div.className = 'mermaid';
         div.textContent = el.textContent;
-        wrapper.replaceWith(div);
+        wrapper.parentNode.replaceChild(div, wrapper);
+        converted.push(div);
       }
     });
 
-    mermaid.init(undefined, '.mermaid');
+    // Run mermaid on converted elements
+    if (converted.length > 0) {
+      mermaid.run({ nodes: converted });
+    }
   });
 </script>
 
 <style>
-/* Mermaid diagram styling */
+/* ===== Mermaid Diagram Container ===== */
 .mermaid {
-  background: #ffffff !important;
+  background: #f8f9fa !important;
   padding: 1.5rem !important;
   border-radius: 12px !important;
   border: 1px solid #e5e7eb !important;
   margin: 1.5rem 0 !important;
   text-align: center !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.mermaid svg {
+  background: transparent !important;
+}
+
+/* ===== Common Text Styles ===== */
+.mermaid text,
+.mermaid .nodeLabel,
+.mermaid .edgeLabel,
+.mermaid .label {
+  fill: #1f2937 !important;
+  color: #1f2937 !important;
+}
+
+/* ===== Flowchart Styles ===== */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon,
+.mermaid .node path {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .node.default > rect,
+.mermaid .node.default > polygon {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .cluster rect {
+  fill: #f9fafb !important;
+  stroke: #d1d5db !important;
+}
+
+.mermaid .cluster text,
+.mermaid .cluster span {
+  fill: #374151 !important;
+  color: #374151 !important;
+}
+
+.mermaid .edgePath path,
+.mermaid .flowchart-link {
+  stroke: #6b7280 !important;
+}
+
+.mermaid .marker,
+.mermaid .arrowheadPath {
+  fill: #6b7280 !important;
+}
+
+/* ===== Sequence Diagram Styles ===== */
+.mermaid .actor {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .actor-line {
+  stroke: #9ca3af !important;
+}
+
+.mermaid text.actor > tspan {
+  fill: #1f2937 !important;
+}
+
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke: #6b7280 !important;
+}
+
+.mermaid .messageText {
+  fill: #1f2937 !important;
+}
+
+.mermaid .note {
+  fill: #fef3c7 !important;
+  stroke: #fbbf24 !important;
+}
+
+.mermaid .noteText,
+.mermaid .noteText > tspan {
+  fill: #1f2937 !important;
+}
+
+.mermaid .activation0,
+.mermaid .activation1,
+.mermaid .activation2 {
+  fill: #dbeafe !important;
+  stroke: #3b82f6 !important;
+}
+
+.mermaid .loopText,
+.mermaid .loopText > tspan,
+.mermaid .labelText,
+.mermaid .labelText > tspan {
+  fill: #1f2937 !important;
+}
+
+.mermaid .loopLine {
+  stroke: #9ca3af !important;
+}
+
+.mermaid .labelBox {
+  fill: #fef3c7 !important;
+  stroke: #fbbf24 !important;
+}
+
+.mermaid rect.rect {
+  fill: #f3f4f6 !important;
+  stroke: #d1d5db !important;
+}
+
+/* ===== Class Diagram Styles ===== */
+.mermaid .classGroup rect {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .classGroup text {
+  fill: #1f2937 !important;
+}
+
+.mermaid .classGroup line {
+  stroke: #0891b2 !important;
+}
+
+/* ===== State Diagram Styles ===== */
+.mermaid .stateGroup rect {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .stateGroup text {
+  fill: #1f2937 !important;
+}
+
+/* ===== ER Diagram Styles ===== */
+.mermaid .entityBox {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .entityLabel {
+  fill: #1f2937 !important;
+}
+
+/* ===== Gantt Chart Styles ===== */
+.mermaid .section {
+  fill: #f3f4f6 !important;
+}
+
+.mermaid .task {
+  fill: #e0f2fe !important;
+  stroke: #0891b2 !important;
+}
+
+.mermaid .taskText {
+  fill: #1f2937 !important;
+}
+
+/* ===== Pie Chart Styles ===== */
+.mermaid .pieTitleText {
+  fill: #1f2937 !important;
+}
+
+.mermaid .slice {
+  stroke: #ffffff !important;
+}
+
+.mermaid .legend text {
+  fill: #1f2937 !important;
 }
 
 /* Post dates in navigation */
