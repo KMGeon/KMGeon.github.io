@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "분산 트랜잭션 (feat. JTA, 2PC)"
-parent: Spring
+parent: Server
 date: 2025-08-24
 ---
 

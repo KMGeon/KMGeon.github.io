@@ -43,11 +43,6 @@ back_to_top_text: "Back to top"
 # Navigation Structure
 nav_enabled: true
 
-# External navigation links
-nav_external_links:
-  - title: GitHub
-    url: https://github.com/KMGeon
-
 # Aux links (top right)
 aux_links:
   "GitHub":
@@ -94,7 +89,6 @@ exclude:
   - Gemfile.lock
   - node_modules/
   - vendor/
-  - README.md
   - LICENSE
 
 # Plugins
