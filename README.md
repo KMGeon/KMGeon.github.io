@@ -1,84 +1,65 @@
-<!-- markdownlint-disable-next-line -->
 <div align="center">
 
-  <!-- markdownlint-disable-next-line -->
-  # Chirpy Jekyll Theme
+# Geon.archive
 
-  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
+Backend Engineer의 기술 블로그
 
-  [![CI](https://img.shields.io/github/actions/workflow/status/cotes2020/jekyll-theme-chirpy/ci.yml?logo=github)][ci]&nbsp;
-  [![Codacy Badge](https://img.shields.io/codacy/grade/4e556876a3c54d5e8f2d2857c4f43894?logo=codacy)][codacy]&nbsp;
-  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy?color=goldenrod)][license]&nbsp;
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?&logo=RubyGems&logoColor=ghostwhite&label=gem&color=orange)][gem]&nbsp;
-  [![Open in Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-deepskyblue?logo=linuxcontainers)][open-container]
+[![Deploy](https://github.com/KMGeon/KMGeon.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/KMGeon/KMGeon.github.io/actions/workflows/pages/pages-build-deployment)
+[![GitHub](https://img.shields.io/github/license/KMGeon/KMGeon.github.io?color=blue)](LICENSE)
 
-  [**Live Demo** →][demo]
-
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+[**Blog** →](https://kmgeon.github.io)
 
 </div>
 
+## About
+
+Spring Boot/Kotlin 기반의 고가용성 백엔드 시스템을 설계하고 자동화하는 백엔드 엔지니어 황보규민입니다.
+
+초당 수천 건의 이벤트를 처리하는 CDC pipeline 구축, 대용량 배치 작업 95.4% 성능 개선, 브랜드별 CI/CD 파이프라인 구축, Redis Stream 기반의 메시징 시스템 설계 등 다양한 프로젝트를 통해 운영 자동화와 시스템 효율 극대화를 목표로 개발해왔습니다.
+
+## Tech Stack
+
+- **Backend**: Java, Kotlin, Spring Boot, Spring Batch
+- **Database**: MySQL, PostgreSQL, Redis
+- **Infra**: AWS (ECS, Aurora, ElastiCache), Docker, Kubernetes
+- **Message**: Redis Stream, Kafka
+
+## Blog Structure
+
+```
+docs/
+├── book/           # 도서 리뷰 및 정리
+├── database/       # 데이터베이스 관련 글
+├── infra/          # 인프라 및 DevOps
+├── server/         # 서버 개발 관련
+├── spring/         # Spring Framework
+└── spring-batch/   # Spring Batch 시리즈
+```
+
 ## Features
 
-- Dark Theme
-- Localized UI language
-- Pinned Posts on Home Page
-- Hierarchical Categories
-- Trending Tags
-- Table of Contents
-- Last Modified Date
-- Syntax Highlighting
-- Mathematical Expressions
-- Mermaid Diagrams & Flowcharts
-- Dark Mode Images
-- Embed Media
-- Comment Systems
-- Built-in Search
-- Atom Feeds
-- PWA
-- Web Analytics
-- SEO & Performance Optimization
+- Just the Docs 테마 기반
+- Mermaid 다이어그램 지원
+- 검색 기능
+- 방문자 카운터 (Busuanzi)
+- 반응형 디자인
+- 커스텀 코드 블록 스타일링
 
-## Documentation
+## Local Development
 
-To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
+```bash
+# Install dependencies
+bundle install
 
-## Contributing
+# Run local server
+bundle exec jekyll serve
+```
 
-Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
-to learn, inspire, and create. Any contributions you make are greatly appreciated.
-For details, see the "[Contributing Guidelines][contribute-guide]".
+## Contact
 
-## Credits
-
-### Contributors
-
-Thanks to [all the contributors][contributors] involved in the development of the project!
-
-[![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
-<sub> — Made with [contrib.rocks](https://contrib.rocks)</sub>
-
-### Third-Party Assets
-
-This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
-
-The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
+- GitHub: [@KMGeon](https://github.com/KMGeon)
+- LinkedIn: [mugeon](https://www.linkedin.com/in/mugeon)
 
 ## License
 
-This project is published under [MIT License][license].
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
-[codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
-[license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
-[open-container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/cotes2020/jekyll-theme-chirpy
-[jekyllrb]: https://jekyllrb.com/
-[clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
-[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
-[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
-[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
-[lib]: https://github.com/cotes2020/chirpy-static-assets
-[vscode]: https://code.visualstudio.com/
-[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
+This project is licensed under the MIT License.
