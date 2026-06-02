@@ -961,19 +961,39 @@ html.dark-mode {
   }
 
   // ----- Tables -----
+  .main-content .table-wrapper {
+    background-color: #0d1117 !important;
+    border-color: #30363d !important;
+  }
+
+  .main-content .table-wrapper:not(:has(pre)):not(:has(.highlight)) {
+    box-shadow: none !important;
+  }
+
   .main-content table {
     background-color: #0d1117 !important;
     border: 1px solid #30363d !important;
 
-    th, td {
+    thead,
+    tbody,
+    tr {
+      background-color: #0d1117 !important;
+    }
+
+    th,
+    td {
       border: 1px solid #30363d !important;
     }
 
+    thead,
+    thead tr,
     th {
       background-color: #161b22 !important;
       color: #c9d1d9 !important;
     }
 
+    tbody,
+    tbody tr,
     td {
       background-color: #0d1117 !important;
       color: #c9d1d9 !important;
