@@ -16,7 +16,7 @@ gh_repo_url: "https://github.com/KMGeon/KMGeon.github.io"
 color_scheme: light
 
 # Enable search
-search_enabled: true
+search_enabled: false
 search:
   heading_level: 2
   previews: 3
