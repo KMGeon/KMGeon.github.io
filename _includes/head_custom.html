@@ -9,6 +9,35 @@
   })();
 </script>
 
+<style>
+/* Dark-mode markdown table override.
+   Keep this inline so it wins even when the compiled theme CSS is cached. */
+html.dark-mode .main-content .table-wrapper,
+html.dark-mode .main-content .table-wrapper table,
+html.dark-mode .main-content .table-wrapper thead,
+html.dark-mode .main-content .table-wrapper tbody,
+html.dark-mode .main-content .table-wrapper tr,
+html.dark-mode .main-content .table-wrapper th,
+html.dark-mode .main-content .table-wrapper td {
+  background-color: #0d1117 !important;
+  border-color: #30363d !important;
+}
+
+html.dark-mode .main-content .table-wrapper th {
+  background-color: #161b22 !important;
+  color: #f0f6fc !important;
+}
+
+html.dark-mode .main-content .table-wrapper td {
+  color: #c9d1d9 !important;
+}
+
+html.dark-mode .main-content .table-wrapper tbody tr:hover,
+html.dark-mode .main-content .table-wrapper tbody tr:hover td {
+  background-color: #161b22 !important;
+}
+</style>
+
 <!-- Busuanzi Visitor Counter -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
