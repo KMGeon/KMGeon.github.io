@@ -3,6 +3,7 @@ layout: default
 title: Database
 nav_order: 5
 has_children: true
+nav_exclude: true
 permalink: /docs/database/
 ---
 
@@ -13,12 +14,6 @@ permalink: /docs/database/
 
 ---
 
-{% assign db_posts = site.pages | where: "parent", "Database" | sort: "date" | reverse %}
-{% for post in db_posts %}
-{% if post.title != "Database" %}
-<div class="post-item">
-<span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-<a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
-</div>
-{% endif %}
-{% endfor %}
+Database 글은 Infra 메뉴로 통합했습니다.
+
+[Infra 글 목록으로 이동]({{ '/docs/infra/' | relative_url }})

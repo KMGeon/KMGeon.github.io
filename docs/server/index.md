@@ -8,7 +8,7 @@ permalink: /docs/server/
 
 # Server
 
-서버 개발 관련 문서들입니다.
+서버 개발과 Spring Batch 관련 문서들입니다.
 {: .fs-6 .fw-300 }
 
 ---

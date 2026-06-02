@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Spring Batch 2 - 핵심 구조 Job, Step, Flow 완벽 이해"
-parent: Spring Batch
+parent: Server
 date: 2026-02-01
 ---
 
