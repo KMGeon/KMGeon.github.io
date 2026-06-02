@@ -783,3 +783,270 @@ mark {
     color: #2563eb;
   }
 }
+
+// =====================================================================
+// ===== Dark Mode =====================================================
+// Toggled by adding `.dark-mode` to <html> (see aux_nav.html / head).
+// Selectors are prefixed with `html.dark-mode` so they out-specify the
+// light `!important` rules above.
+// =====================================================================
+
+// ----- Theme toggle button (sun / moon icon swap) -----
+// Note: selectors include `.aux-nav` to out-specify the existing
+// `.aux-nav .site-button svg { display: block !important }` rule.
+.aux-nav .theme-toggle {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #374151 !important;
+
+  &:hover {
+    color: #1f2937 !important;
+    background-color: #f3f4f6 !important;
+  }
+}
+
+.aux-nav .theme-toggle .theme-icon-sun { display: none !important; }
+.aux-nav .theme-toggle .theme-icon-moon { display: block !important; }
+
+html.dark-mode .aux-nav .theme-toggle {
+  color: #c9d1d9 !important;
+
+  &:hover {
+    color: #f0f6fc !important;
+    background-color: #21262d !important;
+  }
+}
+
+html.dark-mode .aux-nav .theme-toggle .theme-icon-sun { display: block !important; }
+html.dark-mode .aux-nav .theme-toggle .theme-icon-moon { display: none !important; }
+
+html.dark-mode {
+  // ----- Base -----
+  body {
+    color: #c9d1d9 !important;
+    background-color: #0d1117 !important;
+  }
+
+  // ----- Sidebar -----
+  .side-bar {
+    background-color: #0d1117 !important;
+    border-right: 1px solid #21262d !important;
+  }
+
+  .site-title { color: #f0f6fc !important; }
+
+  .nav-list-item { border-bottom: 1px solid #21262d !important; }
+
+  .nav-list-link {
+    color: #c9d1d9 !important;
+
+    &:hover {
+      background-color: #161b22 !important;
+      color: #58a6ff !important;
+    }
+
+    &.active {
+      color: #58a6ff !important;
+      background-color: #161b22 !important;
+      border-left: 3px solid #58a6ff !important;
+    }
+  }
+
+  .site-nav .nav-list .nav-list .nav-list-item .nav-list-link,
+  .nav-list .nav-list .nav-list-link {
+    color: #8b949e !important;
+
+    &:hover {
+      color: #58a6ff !important;
+      background-color: #161b22 !important;
+    }
+
+    &.active {
+      color: #58a6ff !important;
+      background-color: #161b22 !important;
+    }
+  }
+
+  .nav-list .nav-list .nav-list-item { border-bottom: 1px solid #161b22 !important; }
+
+  .nav-list-link .post-date { color: #6e7681 !important; }
+  .nav-list-link .post-title-text { color: #8b949e !important; }
+  .nav-list-link:hover .post-title-text,
+  .nav-list-link.active .post-title-text { color: #58a6ff !important; }
+
+  // ----- Main content -----
+  .main,
+  .main-content { background-color: #0d1117 !important; }
+  .main-content { color: #c9d1d9 !important; }
+  .main-content p,
+  .main-content li { color: #c9d1d9 !important; }
+
+  .main-content h1,
+  .main-content h2,
+  .main-content h3 { color: #f0f6fc !important; }
+  .main-content h4 { color: #c9d1d9 !important; }
+
+  .main-content strong { color: #f0f6fc !important; }
+
+  // ----- Links -----
+  .main-content a { color: #58a6ff !important; }
+
+  // ----- Inline code -----
+  .main-content code {
+    background-color: #1f2430 !important;
+    color: #f0abfc !important;
+  }
+
+  // ----- Code blocks -----
+  .main-content div.highlighter-rouge:has(pre),
+  .main-content figure.highlight:has(pre) {
+    background: #161b22 !important;
+    border: 1px solid #30363d !important;
+    box-shadow: none !important;
+  }
+
+  .main-content pre {
+    background-color: #161b22 !important;
+
+    code {
+      color: #c9d1d9 !important;
+    }
+  }
+
+  // ----- Syntax highlighting (dark palette) -----
+  .highlight {
+    .c, .c1, .cm, .cp, .cs { color: #8b949e !important; }
+    .k, .kd, .kn, .kp, .kr, .kt, .kc { color: #ff7b72 !important; }
+    .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr { color: #a5d6ff !important; }
+    .na { color: #79c0ff !important; }
+    .nb { color: #ffa657 !important; }
+    .nc, .nn { color: #f0883e !important; }
+    .nf, .fm { color: #d2a8ff !important; }
+    .no { color: #79c0ff !important; }
+    .nv, .vi, .vg, .vc { color: #c9d1d9 !important; }
+    .o, .ow { color: #ff7b72 !important; }
+    .p { color: #c9d1d9 !important; }
+    .m, .mi, .mf, .mh, .mo { color: #79c0ff !important; }
+    .err { color: #f85149 !important; background-color: transparent !important; }
+    .n { color: #c9d1d9 !important; }
+    .nl { color: #79c0ff !important; }
+    .nt { color: #7ee787 !important; }
+    .nd { color: #d2a8ff !important; }
+    .nx { color: #c9d1d9 !important; }
+    .at { color: #d2a8ff !important; }
+  }
+
+  // ----- Blockquote -----
+  .main-content blockquote {
+    border-left: 3px solid #58a6ff !important;
+    background-color: #161b22 !important;
+
+    p { color: #8b949e !important; }
+  }
+
+  // ----- Tables -----
+  .main-content table {
+    border: 1px solid #30363d !important;
+
+    th, td { border: 1px solid #30363d !important; }
+
+    th {
+      background-color: #161b22 !important;
+      color: #c9d1d9 !important;
+    }
+
+    tbody tr:hover { background-color: #161b22 !important; }
+  }
+
+  // ----- Horizontal rule -----
+  .main-content hr { border-top: 1px solid #30363d !important; }
+
+  // ----- Header / search -----
+  .main-header {
+    background-color: #0d1117 !important;
+    border-bottom: 1px solid #21262d !important;
+  }
+
+  .search-input {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d !important;
+    color: #c9d1d9 !important;
+
+    &::placeholder { color: #6e7681 !important; }
+
+    &:focus {
+      border-color: #58a6ff !important;
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15) !important;
+    }
+  }
+
+  .search-icon { color: #6e7681 !important; }
+
+  .search-results {
+    background: #161b22 !important;
+    border: 1px solid #30363d !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .search-result:hover { background-color: #21262d !important; }
+  .search-result-title { color: #f0f6fc !important; }
+  .search-result-doc .search-result-doc-title { color: #8b949e !important; }
+  .search-result-rel-url { color: #6e7681 !important; }
+  .search-result-previews { color: #8b949e !important; }
+  mark { background-color: #9e6a03 !important; color: #f0f6fc !important; }
+
+  // ----- Aux nav buttons -----
+  .aux-nav .site-button {
+    color: #c9d1d9 !important;
+
+    &:hover {
+      color: #f0f6fc !important;
+      background-color: #21262d !important;
+    }
+  }
+
+  // ----- Breadcrumbs -----
+  .breadcrumb-nav { color: #8b949e !important; a { color: #58a6ff !important; } }
+
+  // ----- Mermaid diagrams -----
+  // The diagram is rendered with hardcoded LIGHT colors (baked in at render
+  // time via themeVariables). Depending on the block type it ends up either
+  // inside a `.mermaid` div or still inside a `code.language-mermaid`
+  // wrapper. In both cases, keep it on a light card in dark mode so the
+  // light-designed diagram stays fully readable.
+  .mermaid {
+    background: #f8f9fa !important;
+    border: 1px solid #30363d !important;
+    box-shadow: none !important;
+  }
+
+  // SVG rendered inside a code/pre wrapper (not converted to a .mermaid div)
+  svg[id^="mermaid-"] {
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+  }
+
+  code.language-mermaid,
+  pre.language-mermaid,
+  .highlighter-rouge:has(svg[id^="mermaid-"]),
+  div.highlighter-rouge:has(pre svg[id^="mermaid-"]),
+  pre:has(svg[id^="mermaid-"]) {
+    background: #f8f9fa !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #30363d !important;
+  }
+
+  // ----- Post list -----
+  .post-item { border-bottom: 1px solid #21262d !important; }
+  .post-title { color: #f0f6fc !important; &:hover { color: #58a6ff !important; } }
+  .post-date { color: #6e7681 !important; }
+
+  // ----- Code block scrollbar -----
+  .highlight pre::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+  .highlight pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    &:hover { background: rgba(255, 255, 255, 0.3); }
+  }
+}
