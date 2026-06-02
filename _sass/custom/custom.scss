@@ -784,273 +784,269 @@ mark {
   }
 }
 
-// ===== About Me Page =====
-.about-container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
+// =====================================================================
+// ===== Dark Mode =====================================================
+// Toggled by adding `.dark-mode` to <html> (see aux_nav.html / head).
+// Selectors are prefixed with `html.dark-mode` so they out-specify the
+// light `!important` rules above.
+// =====================================================================
 
-.profile-section {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  margin-bottom: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.profile-avatar {
-  flex-shrink: 0;
-}
-
-.avatar-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #e5e7eb;
-}
-
-.profile-info {
-  flex: 1;
-}
-
-.profile-name {
-  font-family: 'Pretendard', 'Inter', sans-serif !important;
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  color: #1f2937 !important;
-  margin: 0 0 0.25rem 0 !important;
-  line-height: 1.2 !important;
-}
-
-.profile-role {
-  font-size: 0.95rem !important;
-  color: #6b7280 !important;
-  margin: 0 0 0.75rem 0 !important;
-  font-weight: 500;
-}
-
-.profile-links {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.profile-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.75rem;
-  background: #1f2937;
-  border-radius: 6px;
-  color: #ffffff !important;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
+// ----- Theme toggle button (sun / moon icon swap) -----
+// Note: selectors include `.aux-nav` to out-specify the existing
+// `.aux-nav .site-button svg { display: block !important }` rule.
+.aux-nav .theme-toggle {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #374151 !important;
 
   &:hover {
-    background: #111827;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-// ===== Open Source Contribution =====
-.oss-project {
-  h3 {
-    font-size: 1rem !important;
-    font-weight: 600 !important;
     color: #1f2937 !important;
-    margin: 0 0 0.75rem 0 !important;
-
-    a {
-      color: #1f2937 !important;
-      text-decoration: none !important;
-
-      &:hover {
-        color: #6366f1 !important;
-      }
-    }
+    background-color: #f3f4f6 !important;
   }
 }
 
-.oss-list {
-  margin: 0 !important;
-  padding-left: 1.25rem !important;
+.aux-nav .theme-toggle .theme-icon-sun { display: none !important; }
+.aux-nav .theme-toggle .theme-icon-moon { display: block !important; }
 
-  li {
-    font-size: 0.875rem !important;
-    color: #4b5563 !important;
-    line-height: 1.7 !important;
-    margin-bottom: 0.5rem !important;
+html.dark-mode .aux-nav .theme-toggle {
+  color: #c9d1d9 !important;
 
-    a {
-      color: #6366f1 !important;
-      font-weight: 600 !important;
-      text-decoration: none !important;
+  &:hover {
+    color: #f0f6fc !important;
+    background-color: #21262d !important;
+  }
+}
 
-      &:hover {
-        text-decoration: underline !important;
-      }
+html.dark-mode .aux-nav .theme-toggle .theme-icon-sun { display: block !important; }
+html.dark-mode .aux-nav .theme-toggle .theme-icon-moon { display: none !important; }
+
+html.dark-mode {
+  // ----- Base -----
+  body {
+    color: #c9d1d9 !important;
+    background-color: #0d1117 !important;
+  }
+
+  // ----- Sidebar -----
+  .side-bar {
+    background-color: #0d1117 !important;
+    border-right: 1px solid #21262d !important;
+  }
+
+  .site-title { color: #f0f6fc !important; }
+
+  .nav-list-item { border-bottom: 1px solid #21262d !important; }
+
+  .nav-list-link {
+    color: #c9d1d9 !important;
+
+    &:hover {
+      background-color: #161b22 !important;
+      color: #58a6ff !important;
     }
+
+    &.active {
+      color: #58a6ff !important;
+      background-color: #161b22 !important;
+      border-left: 3px solid #58a6ff !important;
+    }
+  }
+
+  .site-nav .nav-list .nav-list .nav-list-item .nav-list-link,
+  .nav-list .nav-list .nav-list-link {
+    color: #8b949e !important;
+
+    &:hover {
+      color: #58a6ff !important;
+      background-color: #161b22 !important;
+    }
+
+    &.active {
+      color: #58a6ff !important;
+      background-color: #161b22 !important;
+    }
+  }
+
+  .nav-list .nav-list .nav-list-item { border-bottom: 1px solid #161b22 !important; }
+
+  .nav-list-link .post-date { color: #6e7681 !important; }
+  .nav-list-link .post-title-text { color: #8b949e !important; }
+  .nav-list-link:hover .post-title-text,
+  .nav-list-link.active .post-title-text { color: #58a6ff !important; }
+
+  // ----- Main content -----
+  .main,
+  .main-content { background-color: #0d1117 !important; }
+  .main-content { color: #c9d1d9 !important; }
+  .main-content p,
+  .main-content li { color: #c9d1d9 !important; }
+
+  .main-content h1,
+  .main-content h2,
+  .main-content h3 { color: #f0f6fc !important; }
+  .main-content h4 { color: #c9d1d9 !important; }
+
+  .main-content strong { color: #f0f6fc !important; }
+
+  // ----- Links -----
+  .main-content a { color: #58a6ff !important; }
+
+  // ----- Inline code -----
+  .main-content code {
+    background-color: #1f2430 !important;
+    color: #f0abfc !important;
+  }
+
+  // ----- Code blocks -----
+  .main-content div.highlighter-rouge:has(pre),
+  .main-content figure.highlight:has(pre) {
+    background: #161b22 !important;
+    border: 1px solid #30363d !important;
+    box-shadow: none !important;
+  }
+
+  .main-content pre {
+    background-color: #161b22 !important;
 
     code {
-      font-size: 0.8em !important;
-      background: #f3f4f6 !important;
-      padding: 0.15rem 0.35rem !important;
-      border-radius: 4px !important;
-      color: #e11d48 !important;
-    }
-
-    ul {
-      margin: 0.5rem 0 !important;
-      padding-left: 1.25rem !important;
-
-      li {
-        margin-bottom: 0.35rem !important;
-      }
+      color: #c9d1d9 !important;
     }
   }
-}
 
-.about-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.about-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 1.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  h2 {
-    font-family: 'Pretendard', 'Inter', sans-serif !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    color: #1f2937 !important;
-    margin: 0 0 1rem 0 !important;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #f3f4f6;
+  // ----- Syntax highlighting (dark palette) -----
+  .highlight {
+    .c, .c1, .cm, .cp, .cs { color: #8b949e !important; }
+    .k, .kd, .kn, .kp, .kr, .kt, .kc { color: #ff7b72 !important; }
+    .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr { color: #a5d6ff !important; }
+    .na { color: #79c0ff !important; }
+    .nb { color: #ffa657 !important; }
+    .nc, .nn { color: #f0883e !important; }
+    .nf, .fm { color: #d2a8ff !important; }
+    .no { color: #79c0ff !important; }
+    .nv, .vi, .vg, .vc { color: #c9d1d9 !important; }
+    .o, .ow { color: #ff7b72 !important; }
+    .p { color: #c9d1d9 !important; }
+    .m, .mi, .mf, .mh, .mo { color: #79c0ff !important; }
+    .err { color: #f85149 !important; background-color: transparent !important; }
+    .n { color: #c9d1d9 !important; }
+    .nl { color: #79c0ff !important; }
+    .nt { color: #7ee787 !important; }
+    .nd { color: #d2a8ff !important; }
+    .nx { color: #c9d1d9 !important; }
+    .at { color: #d2a8ff !important; }
   }
 
-  p {
-    font-size: 0.95rem !important;
-    color: #4b5563 !important;
-    line-height: 1.8 !important;
-    margin: 0 0 0.75rem 0 !important;
+  // ----- Blockquote -----
+  .main-content blockquote {
+    border-left: 3px solid #58a6ff !important;
+    background-color: #161b22 !important;
 
-    &:last-child {
-      margin-bottom: 0 !important;
+    p { color: #8b949e !important; }
+  }
+
+  // ----- Tables -----
+  .main-content table {
+    border: 1px solid #30363d !important;
+
+    th, td { border: 1px solid #30363d !important; }
+
+    th {
+      background-color: #161b22 !important;
+      color: #c9d1d9 !important;
     }
 
-    strong {
-      color: #1f2937 !important;
+    tbody tr:hover { background-color: #161b22 !important; }
+  }
+
+  // ----- Horizontal rule -----
+  .main-content hr { border-top: 1px solid #30363d !important; }
+
+  // ----- Header / search -----
+  .main-header {
+    background-color: #0d1117 !important;
+    border-bottom: 1px solid #21262d !important;
+  }
+
+  .search-input {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d !important;
+    color: #c9d1d9 !important;
+
+    &::placeholder { color: #6e7681 !important; }
+
+    &:focus {
+      border-color: #58a6ff !important;
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15) !important;
     }
   }
-}
 
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
+  .search-icon { color: #6e7681 !important; }
 
-.tag {
-  display: inline-block;
-  padding: 0.4rem 0.85rem;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  border: 1px solid #bae6fd;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #0369a1;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-    transform: translateY(-1px);
-  }
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.stat-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.stat-icon {
-  display: block;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.stat-value {
-  display: block;
-  font-family: 'Pretendard', 'Inter', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1f2937;
-  line-height: 1.2;
-}
-
-.stat-label {
-  display: block;
-  font-size: 0.75rem;
-  color: #9ca3af;
-  margin-top: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-@media (max-width: 640px) {
-  .profile-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem;
+  .search-results {
+    background: #161b22 !important;
+    border: 1px solid #30363d !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
   }
 
-  .profile-links {
-    justify-content: center;
+  .search-result:hover { background-color: #21262d !important; }
+  .search-result-title { color: #f0f6fc !important; }
+  .search-result-doc .search-result-doc-title { color: #8b949e !important; }
+  .search-result-rel-url { color: #6e7681 !important; }
+  .search-result-previews { color: #8b949e !important; }
+  mark { background-color: #9e6a03 !important; color: #f0f6fc !important; }
+
+  // ----- Aux nav buttons -----
+  .aux-nav .site-button {
+    color: #c9d1d9 !important;
+
+    &:hover {
+      color: #f0f6fc !important;
+      background-color: #21262d !important;
+    }
   }
 
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+  // ----- Breadcrumbs -----
+  .breadcrumb-nav { color: #8b949e !important; a { color: #58a6ff !important; } }
+
+  // ----- Mermaid diagrams -----
+  // The diagram is rendered with hardcoded LIGHT colors (baked in at render
+  // time via themeVariables). Depending on the block type it ends up either
+  // inside a `.mermaid` div or still inside a `code.language-mermaid`
+  // wrapper. In both cases, keep it on a light card in dark mode so the
+  // light-designed diagram stays fully readable.
+  .mermaid {
+    background: #f8f9fa !important;
+    border: 1px solid #30363d !important;
+    box-shadow: none !important;
   }
 
-  .avatar-circle {
-    width: 80px;
-    height: 80px;
-    font-size: 1.5rem;
+  // SVG rendered inside a code/pre wrapper (not converted to a .mermaid div)
+  svg[id^="mermaid-"] {
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
   }
 
-  .profile-name {
-    font-size: 1.5rem !important;
+  code.language-mermaid,
+  pre.language-mermaid,
+  .highlighter-rouge:has(svg[id^="mermaid-"]),
+  div.highlighter-rouge:has(pre svg[id^="mermaid-"]),
+  pre:has(svg[id^="mermaid-"]) {
+    background: #f8f9fa !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #30363d !important;
+  }
+
+  // ----- Post list -----
+  .post-item { border-bottom: 1px solid #21262d !important; }
+  .post-title { color: #f0f6fc !important; &:hover { color: #58a6ff !important; } }
+  .post-date { color: #6e7681 !important; }
+
+  // ----- Code block scrollbar -----
+  .highlight pre::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+  .highlight pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    &:hover { background: rgba(255, 255, 255, 0.3); }
   }
 }

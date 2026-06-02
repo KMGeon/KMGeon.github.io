@@ -1,3 +1,14 @@
+<!-- Dark mode: apply saved theme before paint to avoid flash -->
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  })();
+</script>
+
 <!-- Busuanzi Visitor Counter -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
