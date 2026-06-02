@@ -41,7 +41,7 @@ body {
   font-size: 1.35rem !important;
   font-weight: 600 !important;
   color: #1f2937 !important;
-  padding: 0 1rem !important;
+  padding: 0 4rem 0 1rem !important;
 }
 
 // Navigation
@@ -799,10 +799,25 @@ mark {
   border: none !important;
   cursor: pointer !important;
   color: #374151 !important;
+  position: fixed !important;
+  top: 1.5rem !important;
+  left: 232px !important;
+  z-index: 100000 !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  padding: 0 !important;
 
   &:hover {
     color: #1f2937 !important;
     background-color: #f3f4f6 !important;
+  }
+}
+
+@media (max-width: 66.5rem) {
+  .aux-nav .theme-toggle {
+    top: 0.875rem !important;
+    left: auto !important;
+    right: 1rem !important;
   }
 }
 
@@ -947,16 +962,27 @@ html.dark-mode {
 
   // ----- Tables -----
   .main-content table {
+    background-color: #0d1117 !important;
     border: 1px solid #30363d !important;
 
-    th, td { border: 1px solid #30363d !important; }
+    th, td {
+      border: 1px solid #30363d !important;
+    }
 
     th {
       background-color: #161b22 !important;
       color: #c9d1d9 !important;
     }
 
-    tbody tr:hover { background-color: #161b22 !important; }
+    td {
+      background-color: #0d1117 !important;
+      color: #c9d1d9 !important;
+    }
+
+    tbody tr:hover,
+    tbody tr:hover td {
+      background-color: #161b22 !important;
+    }
   }
 
   // ----- Horizontal rule -----
