@@ -15,11 +15,10 @@ sitemap: false
 
 {%- assign cats = "Server,Infra,AI,Book" | split: "," -%}
 {%- assign posts = site.pages | where: "layout", "post" -%}
-{% for cat in cats %}
+{% for cat in cats %}{% assign cat_posts = posts | where: "category", cat | sort: "date" | reverse %}{% if cat_posts.size > 0 %}
 ## {{ cat }}
-{% assign cat_posts = posts | where: "category", cat | sort: "date" | reverse %}
 {% for p in cat_posts %}- [{{ p.title }}]({{ p.url | absolute_url }}): {{ p.excerpt | strip_html | strip_newlines }}
-{% endfor %}{% endfor %}
+{% endfor %}{% endif %}{% endfor %}
 ## 메타
 - [전체 태그]({{ '/tags/' | absolute_url }}): 주제별 태그 색인
 - [아카이브]({{ '/archives/' | absolute_url }}): 연도별 전체 글 목록
