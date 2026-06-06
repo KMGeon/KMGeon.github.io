@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko' }}">
+{% include head.html %}
+<body class="layout-{{ page.layout | default: 'page' }}">
+  <div id="blog">
+    {% include header.html %}
+    {% include sidebar.html %}
+    <div id="sidebar-overlay" aria-hidden="true"></div>
+
+    <main id="main" class="main">
+      {{ content }}
+      {% include footer.html %}
+    </main>
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+.home-intro {
+  margin-bottom: 8px;
+  color: var(--text-soft);
+}
+
+// Compact post list (cheese10yun style): flat rows divided by thin lines
+.post-list { display: flex; flex-direction: column; }
+
+.post-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+.post-item:first-of-type { padding-top: 8px; }
+.post-item:last-child { border-bottom: none; }
+
+.post-item-title {
+  margin: 0 0 8px;
+  font-family: $font-serif;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+.post-item-title a { color: var(--text); }
+.post-item-title a:hover { color: var(--accent); }
+
+.post-item-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-feature-settings: "tnum";
+}
+.post-item-meta .dot { margin: 0 7px; color: var(--border); }
+.post-item-cat { text-transform: uppercase; letter-spacing: .4px; font-weight: 600; color: var(--accent); }
+
+.post-item-excerpt {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+.post-item-more {
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--accent);
+}
+.post-item-more::before { content: "› "; }
+
+// Shared tag chip (used on post detail + tags/archive pages)
+.tag-chip {
+  display: inline-block;
+  padding: 3px 11px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-soft);
+  background: var(--code-bg);
+  border-radius: 999px;
+  transition: background .15s ease, color .15s ease;
+}
+.tag-chip:hover { background: var(--accent); color: #fff; }
+
+@media (max-width: #{$bp-tablet}) {
+  .post-item { padding: 22px 0; }
+  .post-item-title { font-size: 21px; }
+}

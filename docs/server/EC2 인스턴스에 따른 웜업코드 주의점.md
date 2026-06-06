@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "EC2 인스턴스에 따른 웜업코드 주의점"
-parent: Server
 date: 2025-11-07
+category: Server
+tags: ["EC2", "Spring Boot", "JVM", "트러블슈팅"]
+excerpt: "EC2 스케일업으로 CPU가 빨라지자 웜업 코드와 JDBC 드라이버 비동기 로딩 사이에 Race Condition이 생기는 원인과 해결법을 배운다"
+permalink: /ec2-warmup-race-condition/
 ---
 
 # 서론

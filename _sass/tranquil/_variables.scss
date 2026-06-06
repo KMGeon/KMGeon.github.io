@@ -1,0 +1,39 @@
+// ===== Design tokens =====
+:root {
+  --sidebar-w: 300px;
+  --header-h: 56px;
+  --content-max: 820px;
+
+  // Accent
+  --accent: #2a8bf2;
+  --accent-dark: #1f6fd0;
+
+  // Light content theme
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #2f3338;
+  --text-soft: #5b626c;
+  --text-muted: #98a0ab;
+  --border: #e8eaed;
+  --code-bg: #f4f5f7;
+  --inline-code: #d6336c;
+
+  // Sidebar (always dark cover)
+  --side-bg-top: #2c2f36;
+  --side-bg-bottom: #20232a;
+  --side-text: #f3f4f6;
+  --side-text-soft: #aab1bd;
+  --side-border: rgba(255, 255, 255, 0.08);
+  --side-hover: rgba(255, 255, 255, 0.06);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 18px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+}
+
+$bp-desktop: 1024px;
+$bp-tablet: 768px;
+
+$font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-serif: 'Lora', Georgia, serif;
+$font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;

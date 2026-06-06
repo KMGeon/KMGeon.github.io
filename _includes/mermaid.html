@@ -1,0 +1,24 @@
+<!-- Mermaid (lazy-converts ```mermaid code blocks) -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: false, theme: 'base', securityLevel: 'loose',
+    flowchart: { useMaxWidth: true, htmlLabels: true }, sequence: { useMaxWidth: true } });
+  window.addEventListener('load', function () {
+    var keywords = ['sequenceDiagram','flowchart','graph','classDiagram','stateDiagram','erDiagram','gantt','pie','journey','gitGraph'];
+    var blocks = document.querySelectorAll('pre code.language-mermaid, pre > code');
+    var converted = [];
+    blocks.forEach(function (el) {
+      var text = el.textContent.trim();
+      if (keywords.some(function (kw) { return text.indexOf(kw) === 0; })) {
+        var pre = el.closest('pre');
+        var wrapper = pre.closest('.highlighter-rouge') || pre;
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = el.textContent;
+        wrapper.parentNode.replaceChild(div, wrapper);
+        converted.push(div);
+      }
+    });
+    if (converted.length) { mermaid.run({ nodes: converted }); }
+  });
+</script>

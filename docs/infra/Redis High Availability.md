@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "Redis High Availability"
-parent: Infra
 date: 2025-08-01
+category: Infra
+tags: ["Redis", "Sentinel", "HAProxy", "Docker"]
+excerpt: "Docker로 Redis Master-Slave, Sentinel, HAProxy를 조합해 자동 장애 복구와 읽기 분산을 갖춘 고가용성 환경을 구축하는 방법을 다룬다"
+permalink: /redis-high-availability-sentinel-haproxy/
 ---
 
 # Docker로 Redis 고가용성 환경 구축하기

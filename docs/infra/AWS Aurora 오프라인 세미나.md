@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "AWS Aurora 오프라인 세미나"
-parent: Infra
 date: 2025-01-24
+category: Infra
+tags: ["AWS", "Aurora", "RDS", "데이터베이스"]
+excerpt: "AWS Aurora의 컴퓨팅/스토리지 분리 구조, 6-way 복제와 Quorum, Blue/Green 배포, 백업과 RDS Proxy 운영 팁을 배운다"
+permalink: /aws-aurora-seminar/
 ---
 
 ![](https://velog.velcdn.com/images/geon_km/post/9248151b-ad69-4663-80dc-75659b8d0633/image.jpeg)

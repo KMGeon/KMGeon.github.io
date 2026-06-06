@@ -1,0 +1,59 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color .15s ease; }
+a:hover { color: var(--accent-dark); }
+
+img { max-width: 100%; height: auto; }
+
+// ===== Layout shell =====
+.main {
+  min-height: 100vh;
+  padding: calc(var(--header-h) + 28px) 20px 40px;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left .25s ease;
+}
+
+.main > * { width: 100%; max-width: var(--content-max); margin-left: auto; margin-right: auto; }
+
+#sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease;
+  z-index: 90;
+}
+
+.sidebar-open #sidebar-overlay { opacity: 1; visibility: visible; }
+
+// ===== Footer =====
+.site-footer {
+  margin-top: auto;
+  padding-top: 40px;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+}
+.site-footer-inner p { margin: 4px 0; }
+.site-footer-links a { color: var(--text-soft); }
+.site-footer-links .dot { margin: 0 8px; color: var(--border); }
+
+// ===== Desktop: sidebar pinned, content offset =====
+@media (min-width: #{$bp-desktop}) {
+  .main { margin-left: var(--sidebar-w); }
+}

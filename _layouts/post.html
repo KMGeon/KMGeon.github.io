@@ -1,0 +1,67 @@
+---
+layout: default
+---
+<aside id="post-toc" class="post-toc" aria-label="목차" hidden>
+  <div class="post-toc-title"><i class="fa-solid fa-list-ul"></i> 목차</div>
+  <nav id="post-toc-nav"></nav>
+</aside>
+
+<article class="post">
+  <header class="post-header">
+    {% if page.category %}
+    <a class="post-category" href="{{ '/archives/' | relative_url }}">{{ page.category }}</a>
+    {% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      {% if page.date %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        <i class="fa-regular fa-calendar"></i> {{ page.date | date: "%Y년 %-m월 %-d일" }}
+      </time>
+      {% endif %}
+      {% if page.tags and page.tags.size > 0 %}
+      <span class="post-meta-tags">
+        <i class="fa-solid fa-tags"></i>
+        {% for tag in page.tags %}
+          <a href="{{ '/tags/' | relative_url }}#tag-{{ tag | slugify }}" class="post-meta-tag">{{ tag }}</a>{% unless forloop.last %} {% endunless %}
+        {% endfor %}
+      </span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    {% if page.tags and page.tags.size > 0 %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+        <a href="{{ '/tags/' | relative_url }}#tag-{{ tag | slugify }}" class="tag-chip">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {%- assign posts = site.pages | where: "layout", "post" | sort: "date" -%}
+    {%- assign idx = 0 -%}
+    {%- for p in posts -%}{%- if p.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+    {%- assign previdx = idx | minus: 1 -%}
+    {%- assign nextidx = idx | plus: 1 -%}
+    {%- assign prev = posts[previdx] -%}
+    {%- assign next = posts[nextidx] -%}
+    <nav class="post-nav">
+      <div class="post-nav-prev">
+        {% if idx > 0 and prev %}
+        <span class="post-nav-label"><i class="fa-solid fa-arrow-left"></i> 이전 글</span>
+        <a href="{{ prev.url | relative_url }}">{{ prev.title }}</a>
+        {% endif %}
+      </div>
+      <div class="post-nav-next">
+        {% if next %}
+        <span class="post-nav-label">다음 글 <i class="fa-solid fa-arrow-right"></i></span>
+        <a href="{{ next.url | relative_url }}">{{ next.title }}</a>
+        {% endif %}
+      </div>
+    </nav>
+  </footer>
+</article>

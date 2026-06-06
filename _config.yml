@@ -1,111 +1,101 @@
-# The Site Configuration - Just the Docs Theme
+# ============================================================
+#  Geon.archive — custom Tranquilpeak-style blog (no gem theme)
+# ============================================================
 
-# Import the theme
-theme: just-the-docs
-
-# Site settings
+# --- Site ---
 title: Geon.archive
 description: Server Development Blog
+lang: ko
 url: "https://kmgeon.github.io"
 baseurl: ""
 
-# Repository
+# --- Author / Profile (sidebar cover) ---
+author:
+  name: KMGeon
+  bio: "Server Development Blog"
+  avatar: /assets/img/commons/profile.jpg
+  github: KMGeon
+  url: "https://github.com/KMGeon"
+
+# Repository (footer link)
 gh_repo_url: "https://github.com/KMGeon/KMGeon.github.io"
 
-# Color scheme (light, dark, or custom)
-color_scheme: light
+# --- SEO / AEO ---
+# Used by jekyll-seo-tag for OpenGraph, Twitter cards and JSON-LD.
+logo: /assets/img/favicons/android-chrome-512x512.png
+image: /assets/img/og-default.png            # default social-share image
+keywords: "Spring Batch, Spring Boot, JPA, AWS, Redis, 서버 개발, 백엔드, 인프라, 기술 블로그"
+twitter:
+  card: summary_large_image
+social:
+  name: KMGeon
+  links:
+    - https://github.com/KMGeon
 
-# Enable search
-search_enabled: false
-search:
-  heading_level: 2
-  previews: 3
-  preview_words_before: 5
-  preview_words_after: 10
-  tokenizer_separator: /[\s/]+/
-  rel_url: true
-  button: false
+# --- Sidebar navigation ---
+# Each item: name (label), url, icon (FontAwesome 6 class)
+nav:
+  - name: Home
+    url: /
+    icon: fa-solid fa-house
+  - name: 태그
+    url: /tags/
+    icon: fa-solid fa-tags
+  - name: 아카이브
+    url: /archives/
+    icon: fa-solid fa-box-archive
+  - name: RSS
+    url: /feed.xml
+    icon: fa-solid fa-rss
 
-# Heading anchor links
-heading_anchors: true
-
-# Footer content (empty to hide)
-footer_content: ""
-
-# Footer last edited timestamp
-last_edit_timestamp: true
-last_edit_time_format: "%b %e %Y at %I:%M %p"
-
-# Back to top link
-back_to_top: true
-back_to_top_text: "Back to top"
-
-# Navigation Structure
-nav_enabled: true
-
-# Aux links (top right)
-aux_links:
-  "GitHub":
-    - "//github.com/KMGeon"
-
-aux_links_new_tab: true
-
-# Callouts
-callouts_level: quiet
-callouts:
-  highlight:
-    color: yellow
-  important:
-    title: Important
-    color: blue
-  new:
-    title: New
-    color: green
-  note:
-    title: Note
-    color: purple
-  warning:
-    title: Warning
-    color: red
-
-# Collections for organizing content
-collections:
-  posts:
-    output: true
-    permalink: /posts/:title/
-
-# Default front matter
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "default"
-
-# Exclude from processing
-exclude:
-  - "*.gem"
-  - "*.gemspec"
-  - Gemfile.lock
-  - node_modules/
-  - vendor/
-  - LICENSE
-
-# Plugins
-plugins:
-  - jekyll-seo-tag
-
-# Markdown processor
+# --- Build / Markdown ---
+markdown: kramdown
+highlighter: rouge
 kramdown:
+  input: GFM
+  syntax_highlighter: rouge
   syntax_highlighter_opts:
     block:
       line_numbers: false
 
-# Mermaid diagrams
-mermaid:
-  version: "10.6.0"
+permalink: pretty
 
-# Sass configuration (suppress deprecation warnings)
 sass:
-  quiet_deps: true
   style: compressed
+  sass_dir: _sass
+
+# --- Plugins ---
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# --- Front-matter defaults ---
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/og-default.png
+  - scope:
+      path: "docs"
+    values:
+      seo:
+        type: BlogPosting
+
+# --- Exclude ---
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor
+  - node_modules
+  - .jekyll-cache
+  - .omc
+  - .omx
+  - .claude
+  - .idea
+  - html-proofer
+  - "*.gem"
+  - "*.gemspec"
+  - ".tmp-metadata.json"
+  - ".tmp-inject.py"

@@ -1,6 +1,6 @@
 {
-  "name": "KMGeon Blog",
-  "short_name": "KMGeon",
+  "name": "Geon.archive",
+  "short_name": "Geon.archive",
   "icons": [
     {
       "src": "/assets/img/favicons/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#6C5CE7",
-  "background_color": "#6C5CE7",
+  "theme_color": "#1f6fd0",
+  "background_color": "#ffffff",
   "display": "standalone"
 }

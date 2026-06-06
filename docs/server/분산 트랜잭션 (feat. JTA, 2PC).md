@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "분산 트랜잭션 (feat. JTA, 2PC)"
-parent: Server
 date: 2025-08-24
+category: Server
+tags: ["분산 트랜잭션", "2PC", "JTA", "Atomikos"]
+excerpt: "2PC 프로토콜의 동작과 한계(데드락)를 이해하고 Atomikos JTA로 Spring Boot에서 분산 트랜잭션을 구현하는 법을 배운다"
+permalink: /distributed-transaction-jta-2pc/
 ---
 
 ## 2PC (Two-Phase Commit)

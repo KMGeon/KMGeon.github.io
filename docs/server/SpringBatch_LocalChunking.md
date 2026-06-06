@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: 스프링 배치 6 Local Chunking ( Write 최적화 )
-parent: Server
 date: 2026-06-06
+category: Server
+tags: ["Spring Batch", "Local Chunking", "Java", "트랜잭션"]
+excerpt: "Spring Batch 6의 Local Chunking으로 Write를 비동기 병렬화하는 원리와 실패 시 재시작 복구가 안 되는 이유를 메타데이터로 분석한다"
+permalink: /spring-batch-local-chunking/
 ---
 
 # 서론

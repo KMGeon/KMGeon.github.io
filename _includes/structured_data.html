@@ -1,0 +1,57 @@
+{%- comment -%} Extra SEO/AEO signals that complement jekyll-seo-tag {%- endcomment -%}
+
+{%- if page.layout == "post" -%}
+  {%- assign kw = page.tags | join: ", " -%}
+  <meta name="keywords" content="{{ kw }}{% if page.category %}, {{ page.category }}{% endif %}">
+  {%- for tag in page.tags %}
+  <meta property="article:tag" content="{{ tag }}">
+  {%- endfor %}
+  {%- if page.category %}<meta property="article:section" content="{{ page.category }}">{% endif %}
+{%- else -%}
+  <meta name="keywords" content="{{ site.keywords }}">
+{%- endif -%}
+
+{%- comment -%} Author entity + site (helps answer engines build a knowledge graph) {%- endcomment -%}
+{%- if page.url == "/" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}{{ site.baseurl }}/#website",
+      "url": "{{ site.url }}{{ site.baseurl }}/",
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "inLanguage": "ko",
+      "publisher": { "@id": "{{ site.url }}{{ site.baseurl }}/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}{{ site.baseurl }}/#person",
+      "name": {{ site.author.name | jsonify }},
+      "url": "{{ site.url }}{{ site.baseurl }}/",
+      "image": "{{ site.author.avatar | absolute_url }}",
+      "description": {{ site.author.bio | jsonify }},
+      "jobTitle": "Server Developer",
+      "sameAs": ["{{ site.author.url }}"]
+    }
+  ]
+}
+</script>
+{%- endif -%}
+
+{%- comment -%} Breadcrumbs for posts {%- endcomment -%}
+{%- if page.layout == "post" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}{{ site.baseurl }}/" },
+    { "@type": "ListItem", "position": 2, "name": {{ page.category | jsonify }}, "item": "{{ '/archives/' | absolute_url }}" },
+    { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page.url | absolute_url }}" }
+  ]
+}
+</script>
+{%- endif -%}

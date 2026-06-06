@@ -1,0 +1,41 @@
+---
+layout: default
+title: 태그
+permalink: /tags/
+---
+{%- assign posts = site.pages | where: "layout", "post" -%}
+{%- assign all_tags = "" | split: "" -%}
+{%- for p in posts -%}
+  {%- for t in p.tags -%}
+    {%- assign all_tags = all_tags | push: t -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign uniq = all_tags | uniq | sort_natural -%}
+
+<div class="page-head">
+  <h1><i class="fa-solid fa-tags"></i> 태그</h1>
+  <div class="page-head-sub">{{ uniq | size }}개의 태그 · {{ posts | size }}개의 글</div>
+</div>
+
+<div class="tag-cloud">
+  {%- for t in uniq -%}
+    {%- assign cnt = all_tags | where_exp: "x", "x == t" | size -%}
+    <a href="#tag-{{ t | slugify }}"><span class="hash">#</span>{{ t }}<span class="tag-count">{{ cnt }}</span></a>
+  {%- endfor -%}
+</div>
+
+{%- for t in uniq -%}
+<section class="tag-section" id="tag-{{ t | slugify }}">
+  <h2 class="tag-section-title"><span class="hash">#</span> {{ t }}</h2>
+  <ul class="entry-list">
+    {%- assign tagged = posts | where_exp: "p", "p.tags contains t" | sort: "date" | reverse -%}
+    {%- for p in tagged -%}
+    <li class="entry-row">
+      <span class="entry-date">{{ p.date | date: "%Y.%m.%d" }}</span>
+      <a class="entry-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+      {%- if p.category -%}<span class="entry-cat">{{ p.category }}</span>{%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endfor -%}

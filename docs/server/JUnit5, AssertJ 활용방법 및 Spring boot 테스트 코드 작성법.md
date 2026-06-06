@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "JUnit5, AssertJ 활용방법 및 Spring boot 테스트 코드 작성법"
-parent: Server
 date: 2025-01-24
+category: Server
+tags: ["JUnit5", "AssertJ", "테스트", "Spring Boot"]
+excerpt: "JUnit5의 주요 어노테이션과 AssertJ 메서드 체이닝을 활용해 Spring Boot 단위 테스트를 작성하는 방법을 배운다"
+permalink: /junit5-assertj-spring-boot-test/
 ---
 
 # 서론

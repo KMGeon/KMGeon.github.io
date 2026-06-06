@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{% assign posts = site.pages | where: "layout", "post" | sort: "date" | reverse %}
+
+<div class="post-list">
+  {% if page.content != "" %}
+  <div class="home-intro">{{ content }}</div>
+  {% endif %}
+
+  {% for post in posts %}
+    {% include post_card.html post=post %}
+  {% endfor %}
+</div>

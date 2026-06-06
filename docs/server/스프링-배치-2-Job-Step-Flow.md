@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "Spring Batch 2 - 핵심 구조 Job, Step, Flow 완벽 이해"
-parent: Server
 date: 2026-02-01
+category: Server
+tags: ["Spring Batch", "Job Step Flow", "배치", "마이그레이션"]
+excerpt: "Spring Batch 6의 불변성·증분기 변경사항과 Job, Step, Flow 분기 처리 구조를 실무 예제로 익힌다"
+permalink: /spring-batch-job-step-flow/
 ---
 
 # 서론

@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "Jenkins + SVN + CodeDeploy를 이용한 Pipeline Blue-Green 무중단 배포"
-parent: Infra
 date: 2024-02-24
+category: Infra
+tags: ["Jenkins", "AWS CodeDeploy", "Nginx", "무중단 배포"]
+excerpt: "Jenkins, SVN, AWS CodeDeploy와 Nginx로 Blue-Green 무중단 배포를 구축하고 Spring Graceful Shutdown까지 적용하는 방법을 배운다"
+permalink: /jenkins-svn-codedeploy-blue-green/
 ---
 
 # 서론

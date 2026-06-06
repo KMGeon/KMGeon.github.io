@@ -1,0 +1,18 @@
+<header id="header" class="header">
+  <button id="btn-open-sidebar" class="header-icon" aria-label="메뉴 열기">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="header-title">
+    <a class="header-title-link" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  </div>
+
+  <div class="header-right">
+    <button id="btn-theme-toggle" class="header-icon" aria-label="다크 모드 전환">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <a class="header-avatar" href="{{ '/' | relative_url }}" aria-label="Home">
+      <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+    </a>
+  </div>
+</header>

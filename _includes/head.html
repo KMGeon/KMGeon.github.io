@@ -1,0 +1,50 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f2228">
+
+  {%- if page.title -%}
+    {%- assign page_title = page.title | append: " · " | append: site.title -%}
+  {%- else -%}
+    {%- assign page_title = site.title -%}
+  {%- endif -%}
+  <title>{{ page_title }}</title>
+
+  {% seo title=false %}
+  {% include structured_data.html %}
+
+  <!-- Dark mode: apply saved theme before paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicons/favicon.svg' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicons/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/favicons/favicon-16x16.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/favicons/apple-touch-icon.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/img/favicons/site.webmanifest' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/img/favicons/favicon.ico' | relative_url }}">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (no SRI hash: avoids the stylesheet being blocked if the hash drifts) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  {% include mermaid.html %}
+</head>

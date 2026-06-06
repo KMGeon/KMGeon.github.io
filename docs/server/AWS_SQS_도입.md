@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "AWS SQS 알아보기 및 도입에 대한 고민"
-parent: Server
 date: 2026-06-04
+category: Server
+tags: ["AWS", "SQS", "메시지 큐", "Outbox 패턴"]
+excerpt: "AWS SQS의 메시지 생명주기와 멱등성, DLQ, Visibility Timeout, Outbox 패턴 등 실제 도입 시 고려할 운영 포인트를 정리한다"
+permalink: /aws-sqs-introduction/
 ---
 
 # 서론

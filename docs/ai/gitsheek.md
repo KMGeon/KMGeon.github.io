@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "Gitsheek를 사용해보며 정리한 AI 코드 분석 경험"
-parent: AI
 date: 2026-06-03
+category: AI
+tags: ["AI", "코드 분석", "Gitsheek", "리팩터링"]
+excerpt: "AI 코드 분석 도구 Gitsheek로 프로젝트 구조 파악, README 검증, 코드 품질 피드백을 어떤 관점으로 활용해야 하는지 배운다"
+permalink: /gitsheek-ai-code-analysis/
 ---
 
 # 서론

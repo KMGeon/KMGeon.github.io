@@ -1,0 +1,47 @@
+// ===== Post table of contents (right rail, wide screens only) =====
+.post-toc {
+  display: none;
+  position: fixed;
+  top: calc(var(--header-h) + 28px);
+  right: 28px;
+  width: 232px;
+  max-height: calc(100vh - var(--header-h) - 60px);
+  overflow-y: auto;
+  padding: 4px 4px 4px 16px;
+  border-left: 2px solid var(--border);
+  font-size: 13px;
+  z-index: 40;
+}
+.post-toc-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: .2px;
+}
+.post-toc-title i { color: var(--accent); margin-right: 5px; }
+
+#post-toc-nav { display: flex; flex-direction: column; }
+.toc-link {
+  display: block;
+  padding: 4px 10px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  border-left: 2px solid transparent;
+  margin-left: -18px;
+  transition: color .15s ease, border-color .15s ease;
+}
+.toc-link.toc-h3 { padding-left: 24px; font-size: 12.5px; }
+.toc-link:hover { color: var(--accent); }
+.toc-link.is-active {
+  color: var(--accent);
+  font-weight: 600;
+  border-left-color: var(--accent);
+}
+
+// Show only when the viewport is wide enough to host the rail without
+// overlapping the (left-aligned) article.
+@media (min-width: 1240px) {
+  .layout-post .main > * { margin-left: 0; margin-right: auto; }
+  .layout-post .post-toc:not([hidden]) { display: block; }
+}

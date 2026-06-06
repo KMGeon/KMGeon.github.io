@@ -1,9 +1,11 @@
 ---
-layout: default
+layout: post
 title: "당신은 외부 API 연동시 어디까지 신경 쓰시나요?"
-parent: Server
 date: 2025-12-14
-permalink: /docs/server/external-api-integration/
+category: Server
+tags: ["외부 API", "트랜잭션", "Resilience4j", "Outbox 패턴"]
+excerpt: "외부 API 연동 시 Facade로 계층을 나누고 REQUIRES_NEW, 이벤트, Outbox로 트랜잭션을 분리하며 Rate Limit, Retry, Timeout으로 안정성을 확보하는 방법"
+permalink: /external-api-integration-transaction/
 ---
 
 # 서론

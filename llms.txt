@@ -1,0 +1,25 @@
+---
+permalink: /llms.txt
+layout: null
+sitemap: false
+---
+# {{ site.title }}
+
+> {{ site.description }} — 서버 개발자 {{ site.author.name }}가 Spring Batch, 트랜잭션, 테스트, AWS·Redis 인프라, 데이터 마이그레이션 등 백엔드 실무에서 배운 내용을 정리한 한국어 기술 블로그입니다.
+
+이 사이트는 Jekyll 기반 정적 블로그이며, 모든 글은 실무 경험과 문제 해결 과정을 다룹니다. 카테고리는 Server(서버/Spring), Infra(AWS·Redis·CI/CD), AI(개발 도구), Book(독서 리뷰)로 구성됩니다.
+
+- 저자: {{ site.author.name }} ({{ site.author.url }})
+- 사이트: {{ site.url }}{{ site.baseurl }}/
+- RSS: {{ site.url }}{{ site.baseurl }}/feed.xml
+
+{%- assign cats = "Server,Infra,AI,Book" | split: "," -%}
+{%- assign posts = site.pages | where: "layout", "post" -%}
+{% for cat in cats %}
+## {{ cat }}
+{% assign cat_posts = posts | where: "category", cat | sort: "date" | reverse %}
+{% for p in cat_posts %}- [{{ p.title }}]({{ p.url | absolute_url }}): {{ p.excerpt | strip_html | strip_newlines }}
+{% endfor %}{% endfor %}
+## 메타
+- [전체 태그]({{ '/tags/' | absolute_url }}): 주제별 태그 색인
+- [아카이브]({{ '/archives/' | absolute_url }}): 연도별 전체 글 목록

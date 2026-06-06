@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: post
 title: "ECS Fargate HA Infra"
-parent: Infra
 date: 2025-10-08
+category: Infra
+tags: ["AWS ECS", "Fargate", "GitHub Actions", "CI/CD"]
+excerpt: "AWS ECS Fargate의 기본 개념부터 EC2와의 선택 기준, ECR 구성과 GitHub Actions CI/CD 자동화까지 실무 운영 노하우를 익힌다"
+permalink: /ecs-fargate-ha-infra/
 ---
 
 # ECS Fargate HA Infra

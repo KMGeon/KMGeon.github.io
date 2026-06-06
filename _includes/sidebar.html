@@ -1,0 +1,36 @@
+{%- assign posts = site.pages | where: "layout", "post" -%}
+<nav id="sidebar" class="sidebar" aria-label="사이드바">
+  <div class="sidebar-inner">
+    <div class="sidebar-profile">
+      <a href="{{ '/' | relative_url }}" class="sidebar-avatar-link">
+        <img class="sidebar-avatar" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+      </a>
+      <h4 class="sidebar-name">{{ site.author.name }}</h4>
+      <p class="sidebar-bio">{{ site.author.bio }}</p>
+      <div class="sidebar-stats">
+        <span><strong>{{ posts | size }}</strong> Posts</span>
+      </div>
+    </div>
+
+    <ul class="sidebar-nav">
+      {% for item in site.nav %}
+      {% assign item_url = item.url | relative_url %}
+      <li class="sidebar-nav-item">
+        <a class="sidebar-nav-link{% if page.url == item.url %} is-active{% endif %}" href="{{ item_url }}">
+          <i class="{{ item.icon }}" aria-hidden="true"></i>
+          <span>{{ item.name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="sidebar-social">
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS">
+        <i class="fa-solid fa-rss"></i>
+      </a>
+    </div>
+  </div>
+</nav>
