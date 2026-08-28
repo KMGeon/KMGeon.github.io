@@ -5,25 +5,27 @@ permalink: /archives/
 ---
 {%- assign posts = site.pages | where: "layout", "post" | sort: "date" | reverse -%}
 
-<div class="page-head">
-  <h1><i class="fa-solid fa-box-archive"></i> 아카이브</h1>
-  <div class="page-head-sub">전체 {{ posts | size }}개의 글</div>
-</div>
+<div class="archive-content">
+  <div class="page-head">
+    <h1><i class="fa-solid fa-box-archive"></i> 아카이브</h1>
+    <div class="page-head-sub">전체 {{ posts | size }}개의 글</div>
+  </div>
 
-{%- assign current_year = "" -%}
-{%- for p in posts -%}
-  {%- assign y = p.date | date: "%Y" -%}
-  {%- if y != current_year -%}
-    {%- unless forloop.first -%}</ul>{%- endunless -%}
-    {%- assign current_year = y -%}
-    {%- assign year_posts = posts | where_exp: "x", "x.date" -%}
-    <h2 class="archive-year">{{ y }}</h2>
-    <ul class="entry-list">
-  {%- endif -%}
-  <li class="entry-row">
-    <span class="entry-date">{{ p.date | date: "%m.%d" }}</span>
-    <a class="entry-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
-    {%- if p.category -%}<span class="entry-cat">{{ p.category }}</span>{%- endif -%}
-  </li>
-  {%- if forloop.last -%}</ul>{%- endif -%}
-{%- endfor -%}
+  {%- assign current_year = "" -%}
+  {%- for p in posts -%}
+    {%- assign y = p.date | date: "%Y" -%}
+    {%- if y != current_year -%}
+      {%- unless forloop.first -%}</ul>{%- endunless -%}
+      {%- assign current_year = y -%}
+      {%- assign year_posts = posts | where_exp: "x", "x.date" -%}
+      <h2 class="archive-year">{{ y }}</h2>
+      <ul class="entry-list">
+    {%- endif -%}
+    <li class="entry-row">
+      <span class="entry-date">{{ p.date | date: "%m.%d" }}</span>
+      <a class="entry-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+      {%- if p.category -%}<span class="entry-cat">{{ p.category }}</span>{%- endif -%}
+    </li>
+    {%- if forloop.last -%}</ul>{%- endif -%}
+  {%- endfor -%}
+</div>
