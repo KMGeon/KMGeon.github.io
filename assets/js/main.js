@@ -30,6 +30,28 @@
     });
   }
 
+  // --- Auto-hide header on small screens (more room for reading) ---
+  var lastY = window.pageYOffset;
+  var headerTicking = false;
+  function updateHeader() {
+    headerTicking = false;
+    var y = window.pageYOffset;
+    var hide = window.innerWidth < 1024 && !body.classList.contains('sidebar-open');
+    if (!hide || y < 80) {
+      body.classList.remove('header-hidden');
+    } else if (y > lastY + 6) {
+      body.classList.add('header-hidden');
+    } else if (y < lastY - 6) {
+      body.classList.remove('header-hidden');
+    } else {
+      return;
+    }
+    lastY = y;
+  }
+  window.addEventListener('scroll', function () {
+    if (!headerTicking) { window.requestAnimationFrame(updateHeader); headerTicking = true; }
+  }, { passive: true });
+
   // --- Dark mode toggle ---
   function syncThemeIcon() {
     if (!btnTheme) return;
@@ -75,7 +97,8 @@
         var el = document.getElementById(h.id);
         if (el) {
           var y = el.getBoundingClientRect().top + window.pageYOffset - 76;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
           history.replaceState(null, '', '#' + h.id);
         }
       });
@@ -85,6 +108,21 @@
 
     if (items.length >= 2) {
       toc.hidden = false;
+
+      // Narrow screens show the TOC inline and collapsed; the toggle is inert on the wide rail
+      var tocToggle = document.getElementById('post-toc-toggle');
+      function setTocOpen(open) {
+        toc.classList.toggle('is-open', open);
+        if (tocToggle) tocToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      if (tocToggle) {
+        tocToggle.addEventListener('click', function () {
+          setTocOpen(!toc.classList.contains('is-open'));
+        });
+      }
+      tocNav.addEventListener('click', function (e) {
+        if (e.target.closest('a') && window.innerWidth < 1700) setTocOpen(false);
+      });
 
       var ticking = false;
       function highlight() {

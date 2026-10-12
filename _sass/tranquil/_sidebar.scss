@@ -40,12 +40,12 @@
   border: 3px solid rgba(255, 255, 255, 0.85);
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
 }
-.sidebar-name { margin: 18px 0 4px; font-size: 22px; font-weight: 700; letter-spacing: .2px; }
-.sidebar-bio { margin: 0; color: var(--side-text-soft); font-size: 14px; }
+.sidebar-name { margin: 18px 0 4px; font-size: 1.375rem; font-weight: 700; }
+.sidebar-bio { margin: 0; color: var(--side-text-soft); font-size: var(--fs-sm); }
 
 .sidebar-stats {
   margin-top: 16px;
-  font-size: 13px;
+  font-size: var(--fs-xs);
   color: var(--side-text-soft);
 }
 .sidebar-stats strong { color: var(--side-text); font-weight: 700; }
@@ -65,14 +65,14 @@
   padding: 12px 14px;
   border-radius: 10px;
   color: var(--side-text-soft);
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 500;
   transition: background .15s ease, color .15s ease;
 }
 .sidebar-nav-link i { width: 20px; text-align: center; font-size: 16px; }
 .sidebar-nav-link:hover { background: var(--side-hover); color: var(--side-text); }
 .sidebar-nav-link.is-active {
-  background: var(--accent);
+  background: var(--accent-fill);
   color: #fff;
   box-shadow: 0 4px 14px rgba(42, 139, 242, 0.4);
 }
@@ -97,7 +97,23 @@
   font-size: 17px;
   transition: background .15s ease, color .15s ease, transform .15s ease;
 }
-.sidebar-social a:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+.sidebar-social a:hover { background: var(--accent-fill); color: #fff; }
+@media (hover: hover) {
+  .sidebar-social a:hover { transform: translateY(-2px); }
+}
+
+@media (max-width: #{$bp-desktop - 1px}) {
+  .sidebar { overscroll-behavior: contain; }
+  .sidebar-open .sidebar { box-shadow: 8px 0 30px rgba(0, 0, 0, 0.3); }
+  .sidebar-inner {
+    padding: calc(32px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  }
+  .sidebar-avatar { width: 88px; height: 88px; }
+  .sidebar-name { margin-top: 14px; font-size: 1.25rem; }
+  .sidebar-nav { margin-top: 24px; padding-top: 16px; }
+  .sidebar-nav-link { padding: 13px 14px; font-size: 1rem; }
+  .sidebar-social a { width: 44px; height: 44px; }
+}
 
 @media (min-width: #{$bp-desktop}) {
   .sidebar { transform: translateX(0); box-shadow: none; }
