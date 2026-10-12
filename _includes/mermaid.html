@@ -1,24 +1,86 @@
-<!-- Mermaid (lazy-converts ```mermaid code blocks) -->
+<!-- Mermaid (lazy-converts ```mermaid code blocks; re-renders when the theme changes) -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
 <script>
-  mermaid.initialize({ startOnLoad: false, theme: 'base', securityLevel: 'loose',
-    flowchart: { useMaxWidth: true, htmlLabels: true }, sequence: { useMaxWidth: true } });
-  window.addEventListener('load', function () {
-    var keywords = ['sequenceDiagram','flowchart','graph','classDiagram','stateDiagram','erDiagram','gantt','pie','journey','gitGraph'];
-    var blocks = document.querySelectorAll('pre code.language-mermaid, pre > code');
-    var converted = [];
-    blocks.forEach(function (el) {
-      var text = el.textContent.trim();
-      if (keywords.some(function (kw) { return text.indexOf(kw) === 0; })) {
-        var pre = el.closest('pre');
-        var wrapper = pre.closest('.highlighter-rouge') || pre;
-        var div = document.createElement('div');
-        div.className = 'mermaid';
-        div.textContent = el.textContent;
-        wrapper.parentNode.replaceChild(div, wrapper);
-        converted.push(div);
-      }
+  (function () {
+    var nodes = [];
+
+    function isDark() { return document.documentElement.classList.contains('dark-mode'); }
+
+    function config() {
+      var font = getComputedStyle(document.documentElement).getPropertyValue('--font-sans').trim() || 'sans-serif';
+      var dark = isDark();
+      return {
+        startOnLoad: false, securityLevel: 'loose',
+        theme: dark ? 'dark' : 'base',
+        themeVariables: dark ? {
+          fontFamily: font, darkMode: true, background: '#0b0e14',
+          primaryColor: '#1c2230', primaryTextColor: '#e6edf3', primaryBorderColor: '#3d4756',
+          secondaryColor: '#161b22', tertiaryColor: '#161b22',
+          lineColor: '#8b949e', textColor: '#c9d1d9',
+          edgeLabelBackground: '#161b22', clusterBkg: '#11161d', clusterBorder: '#3d4756',
+          actorBkg: '#1c2230', actorBorder: '#3d4756', actorTextColor: '#e6edf3', actorLineColor: '#8b949e',
+          signalColor: '#c9d1d9', signalTextColor: '#c9d1d9',
+          labelBoxBkgColor: '#1c2230', labelBoxBorderColor: '#3d4756', labelTextColor: '#e6edf3',
+          noteBkgColor: '#2a2f3a', noteTextColor: '#e6edf3', noteBorderColor: '#3d4756',
+          activationBkgColor: '#2a313c', activationBorderColor: '#58a6ff', sequenceNumberColor: '#0b0e14'
+        } : { fontFamily: font },
+        flowchart: { useMaxWidth: true, htmlLabels: true },
+        sequence: { useMaxWidth: true }
+      };
+    }
+
+    // Posts may hard-code pastel fills (style X fill:#e1f5fe); keep their labels dark in dark mode
+    function fixLightFills(div) {
+      if (!isDark()) return;
+      div.querySelectorAll('g.node').forEach(function (g) {
+        var shape = g.querySelector('rect, polygon, circle, path');
+        // computed style covers inline `style`, classDef rules and fill attributes alike
+        var m = shape && getComputedStyle(shape).fill.match(/\d+(\.\d+)?/g);
+        if (!m || m.length < 3) return;
+        var lum = (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) / 255;
+        if (lum > 0.6) {
+          g.querySelectorAll('.nodeLabel, .label, span, p, div').forEach(function (el) { el.style.color = '#1f2328'; });
+          g.querySelectorAll('text, tspan').forEach(function (el) { el.style.fill = '#1f2328'; });
+        }
+      });
+    }
+
+    function render() {
+      if (!nodes.length) return;
+      mermaid.initialize(config());
+      nodes.forEach(function (div) {
+        div.removeAttribute('data-processed');
+        div.textContent = div.getAttribute('data-src');
+      });
+      Promise.resolve(mermaid.run({ nodes: nodes })).then(function () {
+        nodes.forEach(function (div) {
+          var svg = div.querySelector('svg');
+          var vb = svg && svg.viewBox && svg.viewBox.baseVal;
+          // Natural width lets small screens keep text legible (see _post.scss)
+          if (vb && vb.width) svg.style.setProperty('--mermaid-w', Math.round(vb.width));
+          fixLightFills(div);
+        });
+      });
+    }
+
+    window.addEventListener('load', function () {
+      var keywords = ['sequenceDiagram','flowchart','graph','classDiagram','stateDiagram','erDiagram','gantt','pie','journey','gitGraph'];
+      document.querySelectorAll('pre code.language-mermaid, pre > code').forEach(function (el) {
+        var text = el.textContent.trim();
+        if (keywords.some(function (kw) { return text.indexOf(kw) === 0; })) {
+          var pre = el.closest('pre');
+          var wrapper = pre.closest('.highlighter-rouge') || pre;
+          var div = document.createElement('div');
+          div.className = 'mermaid';
+          div.setAttribute('data-src', el.textContent);
+          wrapper.parentNode.replaceChild(div, wrapper);
+          nodes.push(div);
+        }
+      });
+      // Measure labels only after the web font is ready, or boxes are sized for the fallback face
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(render);
     });
-    if (converted.length) { mermaid.run({ nodes: converted }); }
-  });
+
+    document.addEventListener('themechange', render);
+  })();
 </script>

@@ -1,0 +1,17 @@
+// ===== Print: article only, black on white =====
+@media print {
+  .header, .sidebar, #sidebar-overlay, .post-toc, .post-nav, .site-footer { display: none !important; }
+
+  html, body { background: #fff !important; color: #000 !important; }
+  .main { margin: 0 !important; padding: 0 !important; }
+  .post { border: none; box-shadow: none; padding: 0; max-width: none; }
+  .post-content { font-size: 11pt; line-height: 1.7; }
+
+  .post-content pre,
+  .post-content pre code { white-space: pre-wrap; word-break: break-all; }
+  .post-content pre { background: #f6f8fa !important; color: #000 !important; border: 1px solid #ddd; padding: 10px 12px; margin-left: 0; margin-right: 0; }
+  .post-content pre, .post-content blockquote, .post-content table, .post-content img, .mermaid { break-inside: avoid; }
+  .post-content h1, .post-content h2, .post-content h3 { break-after: avoid; }
+
+  .post-content a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .85em; color: #555; word-break: break-all; }
+}

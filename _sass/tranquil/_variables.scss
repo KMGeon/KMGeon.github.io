@@ -1,22 +1,24 @@
 // ===== Design tokens =====
 :root {
-  --sidebar-w: 300px;
+  --sidebar-w: min(300px, 85vw);
   --header-h: 56px;
   --content-max: 820px;
 
   // Accent
-  --accent: #2a8bf2;
-  --accent-dark: #1f6fd0;
+  // Text-safe accent (>= 4.5:1 on every light surface) and a fill for white labels
+  --accent: #1a6bc9;
+  --accent-dark: #155aab;
+  --accent-fill: #1a6bc9;
 
   // Light content theme
   --bg: #f6f7f9;
   --surface: #ffffff;
   --text: #2f3338;
   --text-soft: #5b626c;
-  --text-muted: #98a0ab;
+  --text-muted: #646c78;
   --border: #e8eaed;
   --code-bg: #f4f5f7;
-  --inline-code: #d6336c;
+  --inline-code: #c0245a;
 
   // Sidebar (always dark cover)
   --side-bg-top: #2c2f36;
@@ -26,6 +28,33 @@
   --side-border: rgba(255, 255, 255, 0.08);
   --side-hover: rgba(255, 255, 255, 0.06);
 
+  // ----- Typography -----
+  // rem-based so browser / OS text-size settings scale the whole site.
+  // Fluid sizes interpolate from a 360px phone to a ~1280px desktop.
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'Pretendard Variable', 'Apple SD Gothic Neo', monospace;
+
+  --fs-2xs: 0.75rem;                                         // 12  badges, counters
+  --fs-xs: 0.8125rem;                                        // 13  meta, dates
+  --fs-sm: 0.875rem;                                         // 14  secondary UI, tables
+  --fs-lead: clamp(0.9375rem, 0.92rem + 0.08vw, 1rem);       // 15 → 16  excerpts
+  --fs-body: clamp(1rem, 0.975rem + 0.11vw, 1.0625rem);      // 16 → 17  reading text
+  --fs-code: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);    // 13 → 14  code blocks
+  --fs-h4: clamp(1.0625rem, 1.04rem + 0.1vw, 1.125rem);      // 17 → 18
+  --fs-h3: clamp(1.125rem, 1.07rem + 0.25vw, 1.3125rem);     // 18 → 21
+  --fs-h2: clamp(1.25rem, 1.16rem + 0.4vw, 1.5rem);          // 20 → 24
+  --fs-h1: clamp(1.375rem, 1.25rem + 0.55vw, 1.75rem);       // 22 → 28
+  --fs-list-title: clamp(1.25rem, 1.08rem + 0.75vw, 1.625rem); // 20 → 26
+  --fs-page-title: clamp(1.5rem, 1.35rem + 0.65vw, 1.875rem);  // 24 → 30
+  --fs-title: clamp(1.5rem, 1.3rem + 0.9vw, 2.125rem);       // 24 → 34  post title
+
+  --lh-body: 1.8;      // Hangul needs more leading than Latin
+  --lh-snug: 1.6;
+  --lh-heading: 1.4;
+  --ls-heading: -0.02em;
+
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 18px rgba(0, 0, 0, 0.08);
   --radius: 12px;
@@ -34,6 +63,5 @@
 $bp-desktop: 1024px;
 $bp-tablet: 768px;
 
-$font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-$font-serif: 'Lora', Georgia, serif;
-$font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+$font-sans: var(--font-sans);
+$font-mono: var(--font-mono);

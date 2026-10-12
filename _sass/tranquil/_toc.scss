@@ -1,49 +1,100 @@
-// ===== Post table of contents (right rail, wide screens only) =====
+// ===== Post table of contents =====
+// Narrow screens: collapsible box under the post header.
+// Wide screens (>= 1700px): fixed right rail beside the article.
 .post-toc {
   display: none;
-  position: fixed;
-  top: calc(var(--header-h) + 44px);
-  right: max(28px, calc(50vw - 880px));
-  width: 280px;
-  max-height: calc(100vh - var(--header-h) - 76px);
-  overflow-y: auto;
-  padding: 8px 20px 12px 24px;
-  border-left: 2px solid var(--border);
-  font-size: 13.5px;
-  z-index: 40;
-  margin: 0;
-  max-width: none;
+  margin: -8px 0 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--code-bg);
+  font-size: var(--fs-sm);
 }
-.post-toc-title {
-  font-weight: 700;
-  font-size: 13px;
-  color: var(--text);
-  margin-bottom: 12px;
-  letter-spacing: .2px;
-}
-.post-toc-title i { color: var(--accent); margin-right: 5px; }
+.post-toc:not([hidden]) { display: block; }
 
-#post-toc-nav { display: flex; flex-direction: column; }
+.post-toc-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.post-toc-title i.fa-list-ul { color: var(--accent); margin-right: 6px; }
+.post-toc-chevron { font-size: 12px; color: var(--text-muted); transition: transform .2s ease; }
+.post-toc.is-open .post-toc-chevron { transform: rotate(180deg); }
+
+#post-toc-nav {
+  display: none;
+  flex-direction: column;
+  max-height: 55vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 8px 10px;
+}
+.post-toc.is-open #post-toc-nav { display: flex; }
+
 .toc-link {
   display: block;
-  padding: 5px 12px;
-  color: var(--text-muted);
-  line-height: 1.5;
+  padding: 8px 10px;
+  color: var(--text-soft);
+  line-height: var(--lh-snug);
+  border-radius: 6px;
   border-left: 2px solid transparent;
-  margin-left: -14px;
   transition: color .15s ease, border-color .15s ease;
 }
-.toc-link.toc-h3 { padding-left: 24px; font-size: 12.5px; }
+.toc-link.toc-h3 { padding-left: 24px; font-size: var(--fs-xs); }
 .toc-link:hover { color: var(--accent); }
 .toc-link.is-active {
   color: var(--accent);
   font-weight: 600;
-  border-left-color: var(--accent);
 }
 
-// Keep the article centered and show the rail only when both can fit
-// without overlapping each other.
 @media (min-width: 1700px) {
   .layout-post .post { padding-right: 340px; }
-  .layout-post .post-toc:not([hidden]) { display: block; }
+
+  .post-toc {
+    position: fixed;
+    top: calc(var(--header-h) + 44px);
+    right: max(28px, calc(50vw - 880px));
+    width: 280px;
+    max-height: calc(100vh - var(--header-h) - 76px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 8px 20px 12px 24px;
+    border: none;
+    border-left: 2px solid var(--border);
+    border-radius: 0;
+    background: transparent;
+    font-size: var(--fs-sm);
+    z-index: 40;
+  }
+  .post-toc-title {
+    min-height: 0;
+    padding: 0;
+    margin-bottom: 12px;
+    font-size: var(--fs-xs);
+    pointer-events: none;
+    cursor: default;
+  }
+  .post-toc-chevron { display: none; }
+
+  #post-toc-nav,
+  .post-toc.is-open #post-toc-nav { display: flex; max-height: none; overflow: visible; padding: 0; }
+
+  .toc-link {
+    padding: 5px 12px;
+    margin-left: -14px;
+    color: var(--text-muted);
+    border-radius: 0;
+  }
+  .toc-link.toc-h3 { padding-left: 24px; font-size: var(--fs-xs); }
+  .toc-link.is-active { border-left-color: var(--accent); }
 }

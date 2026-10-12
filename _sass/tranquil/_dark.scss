@@ -4,13 +4,19 @@ html.dark-mode {
   --surface: #161b22;
   --text: #c9d1d9;
   --text-soft: #9aa4b0;
-  --text-muted: #6e7681;
+  --text-muted: #8b949e;
   --border: #2a313c;
   --code-bg: #1c2230;
   --inline-code: #ff7b9c;
   --accent: #58a6ff;
   --accent-dark: #79b8ff;
+  --accent-fill: #1a64d6;   // white text on it stays >= 4.5:1
+  color-scheme: dark;       // dark scrollbars / native controls
 }
+
+html { color-scheme: light; }
+
+html.dark-mode ::selection { background: rgba(88, 166, 255, 0.35); color: #fff; }
 
 html.dark-mode .header {
   background: rgba(13, 17, 23, 0.82);
@@ -24,6 +30,9 @@ html.dark-mode .mermaid {
   background: #0b0e14 !important;
   border-color: #2a313c !important;
 }
+html.dark-mode .post-content th { background: #1c2230; }
+html.dark-mode .post-content a { border-bottom-color: rgba(88, 166, 255, 0.35); }
+html.dark-mode .post-toc { background: var(--surface); }
 
 html.dark-mode img:not(.sidebar-avatar):not(.header-avatar img) {
   filter: brightness(.92);

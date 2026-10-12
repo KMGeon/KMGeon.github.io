@@ -30,7 +30,7 @@
 }
 .header-icon:hover { background: var(--code-bg); color: var(--text); }
 
-.header-title { flex: 1; font-weight: 700; font-size: 18px; }
+.header-title { flex: 1; font-weight: 700; font-size: 1.125rem; letter-spacing: -0.01em; }
 .header-title-link { color: var(--text); }
 .header-title-link:hover { color: var(--accent); }
 
@@ -38,6 +38,25 @@
 .header-avatar img {
   width: 34px; height: 34px; border-radius: 50%;
   object-fit: cover; border: 1px solid var(--border); display: block;
+}
+
+// Phones/tablets: header slides away while reading down, returns on scroll up
+@media (max-width: #{$bp-desktop - 1px}) {
+  .header { transition: transform .25s ease; will-change: transform; }
+  .header-hidden .header { transform: translateY(-100%); }
+}
+
+@media (max-width: #{$bp-tablet}) {
+  .header {
+    gap: 4px;
+    padding: 0 max(6px, env(safe-area-inset-right)) 0 max(6px, env(safe-area-inset-left));
+  }
+  .header-icon { width: 44px; height: 44px; font-size: 19px; }
+  .header-title { font-size: 1.0625rem; }
+  .header-title-link { display: inline-block; padding: 12px 0; }
+  .header-right { gap: 2px; }
+  .header-avatar { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  .header-avatar img { width: 32px; height: 32px; }
 }
 
 @media (min-width: #{$bp-desktop}) {
